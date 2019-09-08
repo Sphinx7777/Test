@@ -1,27 +1,35 @@
-import React from 'react'
+import React,{useState} from 'react'
 import s from './ToDo.module.scss'
 import settings from './../image/Settings.ico'
+import {FormForTask} from "./FormForTask";
 
 
-let tasks = [
-	{id: 1, description: 'learn React dmnhhfnjdf fdfdf dfdrsr dfdfdrfdre dfddfdf dfdfdfd', status: false},
-	{id: 2, description: 'learn JS', status: false},
-	{id: 3, description: 'learn Redux', status: false}
-];
+
 
 const Todo = (props) => {
+	let {tasks,addNewTask,removeTask,changeTask,changeTaskStatus,editMode} = props;
+	let [name,setName] = useState('');
+	let [description,setDescription] = useState('');
+
+	let onSubmit=(e)=>{
+		setName(e.value.name);
+		setDescription(e.value.description);
+	};
 
 	return (
 		<div className={s.todoWrapper}>
 			<div className={s.todo}>
 				<div><h2>Список дел которые надо успеть ...</h2></div>
 				<div className={s.todoButtons}>
-					<button className={s.todoBtn} onClick={() => {console.log('Добавить новый прикол')}}>
+					<button className={s.todoBtn} onClick={() => {addNewTask({id:Math.random(),name,description})}}>
 						Добавить новый прикол
 					</button>
-					<button className={s.todoBtn} onClick={() => {console.log('Удалить выделенные')}}>
+					<button className={s.todoBtn} onClick={() => {removeTask()}}>
 						Удалить выделенные
 					</button>
+					{editMode && <div className={s.formForTask}>
+						<FormForTask onSubmit={onSubmit}/>
+					</div>}
 				</div>
 				<div className={s.todoList}>
 					<div className={s.listWrapper}>
@@ -47,7 +55,7 @@ const Todo = (props) => {
 					</div>
 				</div>
 				<div className={s.footer}>
-					<div className={s.allCount} onClick={() => {console.log('Общее количество')}}>Общее количество : {tasks.length} </div>
+					<div className={s.allCount}>Общее количество : {tasks.length}</div>
 					<div className={s.filter}>
 						<div className={s.filterItem} onClick={() => {console.log('Все')}}>Все</div>
 						<div className={s.filterItem} onClick={() => {console.log('Активные')}}>Активные</div>

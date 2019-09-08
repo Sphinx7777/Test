@@ -1,28 +1,49 @@
 import React from 'react'
 import s from './ToDo.module.scss'
-import * as handleSubmit from "redux-form";
+import {Field, reduxForm} from "redux-form";
+import {Input} from "../FormComponents/Input";
 
 
-
-
-
-export const FormForTask = (props) => {
-
+const FormForTask = (props) => {
+	const {handleSubmit, pristine, reset, submitting,onSubmit,changeStatusTaskEditForm} = props;
 	return (
 		<div className={s.formWrapper}>
-			<form onSubmit={handleSubmit(props.onSubmit)}>
+			<form onSubmit={handleSubmit(onSubmit)}>
 				<div>
-					<input type="text" placeholder='Название'/>
+				<Field
+					typeComponent='input'
+					autoFocus={true}
+					name="name"
+					type="text"
+					component={Input}
+					label="Название"
+				/>
 				</div>
 				<div>
-					<input type="text" placeholder='Описание'/>
+				<Field
+					autocomplete='on'
+					cols= '25'
+					rows='3'
+					typeComponent='textarea'
+					name="description"
+					type="text"
+					component={Input}
+					label="Описание"
+				/>
 				</div>
-
-
-				<button>Сохранить</button>
+				<div>
+					<button type="submit" disabled={submitting}>
+						Сохранить
+					</button>
+					<button type="button" disabled={pristine || submitting} onClick={reset}>
+						Очистить
+					</button>
+				</div>
+				<div className={s.closeForm} onClick={()=>{changeStatusTaskEditForm(false)}}><span className={s.closeFormBtn}>X</span></div>
 			</form>
-
 		</div>
 	)
-
 };
+
+export default reduxForm({form: 'taskForm'})(FormForTask)
+

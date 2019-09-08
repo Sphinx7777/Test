@@ -2,6 +2,54 @@
 	max-width: 50rem;
 	margin: 0 auto;
 
+	.formForTask {
+		display: flex;
+		justify-content: space-around;
+
+		.formWrapper {
+			display: inline-block;
+			padding: 0.5rem;
+			box-shadow: 0 1px 4px rgba(0, 0, 0, .3),
+			-23px 0 20px -23px rgba(0, 0, 0, .6),
+			23px 0 20px -23px rgba(0, 0, 0, .6),
+			inset 0 0 40px rgba(0, 0, 0, .1);
+			input 	{
+				margin: 0.5rem 0 0.5rem 0;
+			}
+			input[type=text] {
+				width: 15rem;
+				height: 1.2rem;
+				font-size: 1.2rem;
+				padding: 0.2rem;
+				border-radius: 0.5rem;
+				outline: none;
+			}
+			textarea {
+				border-radius: 0.5rem;
+				outline: none;
+				font-size: 1.5rem;
+
+			}
+			.closeForm {
+				text-align: right;
+				padding-right: 1rem;
+
+
+				.closeFormBtn {
+					color: red;
+					font-weight: bold;
+					outline: none;
+					cursor: pointer;
+
+
+
+				}
+
+			}
+		}
+
+	}
+
 	.todo {
 		margin-top: 3rem;
 		border-radius: 1rem;
@@ -12,6 +60,7 @@
 		23px 0 20px -23px rgba(0, 0, 0, .6),
 		inset 0 0 40px rgba(0, 0, 0, .1);
 
+
 		.todoButtons {
 			display: flex;
 			justify-content: center;
@@ -20,7 +69,7 @@
 				max-width: 1.5rem;
 			}
 
-			.todoBtn {
+			.todoBtnAdd,.todoBtnDell {
 				border: 1px solid white;
 				background-color: rgba(0, 0, 0, .4);
 				font-size: 1.2rem;
@@ -34,19 +83,15 @@
 				color: white;
 			}
 
-			.todoBtn:last-child {
-
-			}
-
-			.todoBtn:disabled {
-				border: 1px solid grey;
-			}
-
-			.todoBtn:hover {
+			.todoBtnAdd:hover,.todoBtnDell:hover {
 				background: rgba(0, 0, 0, .2);
 				color: black;
 				border: 1px solid black;
-
+			}
+			.todoBtnDell:disabled {
+				border: 1px solid grey;
+				background: rgba(0, 0, 0, .2);
+				color: white;
 			}
 		}
 
@@ -55,6 +100,11 @@
 			.listWrapper {
 				max-width: 90%;
 				margin: 1rem auto;
+
+				.taskName {
+					text-align: left;
+					padding: 0.2rem 0.6rem;
+				}
 
 				.task {
 					display: flex;
@@ -162,7 +212,7 @@
 
 			.todoButtons {
 
-				.todoBtn {
+				.todoBtnAdd,.todoBtnDell {
 					border: 1px solid white;
 					font-size: 1rem;
 					margin-right: 0.5rem;
@@ -205,7 +255,7 @@
 			.todoButtons {
 				flex-direction: column;
 
-				.todoBtn {
+				.todoBtnAdd,.todoBtnDell {
 					margin: 0 auto 0.5rem auto;
 
 				}

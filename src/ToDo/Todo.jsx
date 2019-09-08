@@ -4,7 +4,7 @@ import settings from './../image/Settings.ico'
 
 
 let tasks = [
-	{id: 1, description: 'learn React', status: false},
+	{id: 1, description: 'learn React dmnhhfnjdf fdfdf dfdrsr dfdfdrfdre dfddfdf dfdfdfd', status: false},
 	{id: 2, description: 'learn JS', status: false},
 	{id: 3, description: 'learn Redux', status: false}
 ];
@@ -16,10 +16,10 @@ const Todo = (props) => {
 			<div className={s.todo}>
 				<div><h2>Список дел которые надо успеть ...</h2></div>
 				<div className={s.todoButtons}>
-					<button className={s.todoBtn} onClick={() => {console.log('edit')}}>
+					<button className={s.todoBtn} onClick={() => {console.log('Добавить новый прикол')}}>
 						Добавить новый прикол
 					</button>
-					<button className={s.todoBtn} onClick={() => {console.log('edit')}}>
+					<button className={s.todoBtn} onClick={() => {console.log('Удалить выделенные')}}>
 						Удалить выделенные
 					</button>
 				</div>
@@ -35,15 +35,23 @@ const Todo = (props) => {
 													 }}/>
 									</div>
 									<span className={s.taskDescription}>{t.description}</span>
-									<span className={s.taskEdit}
+									<span className={s.taskEdit} title='Редактировать'
 												onClick={() => {
-													console.log('edit')
+													console.log('Редактировать')
 												}}>
-										<img className={s.settingsIcon} src={settings} alt=""/>
+										<img className={s.settingsIcon} src={settings}  alt="Редактировать"/>
 									</span>
 								</div>
 							)
 						})}
+					</div>
+				</div>
+				<div className={s.footer}>
+					<div className={s.allCount} onClick={() => {console.log('Общее количество')}}>Общее количество : {tasks.length} </div>
+					<div className={s.filter}>
+						<div className={s.filterItem} onClick={() => {console.log('Все')}}>Все</div>
+						<div className={s.filterItem} onClick={() => {console.log('Активные')}}>Активные</div>
+						<div className={s.filterItem} onClick={() => {console.log('Завершенные')}}>Завершенные</div>
 					</div>
 				</div>
 			</div>

@@ -3,11 +3,14 @@
 	margin: 0 auto;
 
 	.todo {
-		border: 3px solid black;
 		margin-top: 3rem;
 		border-radius: 1rem;
 		outline: none;
 		background-color: rgba(0, 0, 0, .1);
+		box-shadow: 0 1px 4px rgba(0, 0, 0, .3),
+		-23px 0 20px -23px rgba(0, 0, 0, .6),
+		23px 0 20px -23px rgba(0, 0, 0, .6),
+		inset 0 0 40px rgba(0, 0, 0, .1);
 
 		.todoButtons {
 			display: flex;
@@ -18,8 +21,8 @@
 			}
 
 			.todoBtn {
-				border: 1px solid black;
-				background-color: rgba(0, 0, 0, .6);
+				border: 1px solid white;
+				background-color: rgba(0, 0, 0, .4);
 				font-size: 1.2rem;
 				font-weight: bold;
 				border-radius: 1rem;
@@ -42,6 +45,8 @@
 			.todoBtn:hover {
 				background: rgba(0, 0, 0, .2);
 				color: black;
+				border: 1px solid black;
+
 			}
 		}
 
@@ -66,17 +71,24 @@
 						border-radius: 0.5rem;
 						outline: none;
 
+
 						.taskStatus {
 							display: inline-block;
 							zoom: 2;
 							cursor: pointer;
 						}
+
+						.taskStatus:hover {
+						}
+					}
+
+					.inputWrapper:hover {
+						background: rgba(0, 0, 0, .1);
 					}
 
 
 					.taskDescription {
 						display: block;
-						padding: 0.5rem;
 						font-style: italic;
 					}
 
@@ -88,12 +100,14 @@
 						border: 4px solid black;
 						font-weight: bold;
 						cursor: pointer;
+
 						.settingsIcon {
 							max-width: 1.5rem;
 						}
 					}
+
 					.taskEdit:hover {
-						background: rgba(0, 0, 0, .2);
+						background: rgba(0, 0, 0, .1);
 					}
 
 
@@ -101,5 +115,102 @@
 
 			}
 		}
+
+		.footer {
+			display: flex;
+			justify-content: space-between;
+			padding-bottom: 0.5rem;
+
+			.allCount {
+				padding: 0.2rem;
+				border: 1px solid black;
+				border-radius: 0.5rem;
+				outline: none;
+				margin-left: 0.5rem;
+				cursor: pointer;
+			}
+
+			.allCount:hover {
+				background: rgba(0, 0, 0, .1);
+			}
+
+			.filter {
+				display: flex;
+
+				.filterItem {
+					padding: 0.2rem;
+					border: 1px solid black;
+					border-radius: 0.5rem;
+					outline: none;
+					margin-right: 0.5rem;
+					cursor: pointer;
+				}
+
+				.filterItem:hover {
+					background: rgba(0, 0, 0, .1);
+				}
+
+			}
+		}
 	}
+}
+
+@media screen and (max-width: 700px) {
+	.todoWrapper {
+
+		.todo {
+
+			.todoButtons {
+
+				.todoBtn {
+					border: 1px solid white;
+					font-size: 1rem;
+					margin-right: 0.5rem;
+					margin-bottom: 0.5rem;
+				}
+			}
+		}
+	}
+
+}
+
+@media screen and (max-width: 450px) {
+	.todoWrapper {
+
+		.todo {
+
+			.todoList {
+
+				.listWrapper {
+					margin-bottom: 0;
+
+					.task {
+						margin-bottom: 0;
+					}
+				}
+			}
+
+			.footer {
+				flex-direction: column;
+
+				.filter {
+					justify-content: center;
+				}
+
+				.allCount {
+					margin: 0.3rem auto;
+				}
+			}
+
+			.todoButtons {
+				flex-direction: column;
+
+				.todoBtn {
+					margin: 0 auto 0.5rem auto;
+
+				}
+			}
+		}
+	}
+
 }

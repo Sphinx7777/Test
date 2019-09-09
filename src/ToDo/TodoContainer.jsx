@@ -1,7 +1,14 @@
 import React from 'react'
 import Todo from "./Todo";
 import {connect} from "react-redux";
-import {addNewTask, changeStatusTaskEditForm, changeTask, changeTaskStatus, removeTask} from "../Redux/todoReducer";
+import {
+	addNewTask,
+	changeStatusAllTasks,
+	changeStatusTaskEditForm,
+	changeTask,
+	changeTaskStatus,
+	removeTask
+} from "../Redux/todoReducer";
 
 
 
@@ -22,7 +29,8 @@ class TodoContainer extends React.Component {
 let mapStateToProps = (state)=>({
 	tasks: state.toDo.tasks,
 	editMode: state.toDo.editMode,
+	allMark: state.toDo.allMark,
 });
 
 export default connect(mapStateToProps,
-	{addNewTask,removeTask,changeTask,changeTaskStatus,changeStatusTaskEditForm})(TodoContainer);
+	{addNewTask,removeTask,changeTask,changeTaskStatus,changeStatusAllTasks,changeStatusTaskEditForm})(TodoContainer);

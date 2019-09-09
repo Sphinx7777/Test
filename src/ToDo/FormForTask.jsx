@@ -21,7 +21,6 @@ const FormForTask = (props) => {
 				</div>
 				<div>
 				<Field
-					autocomplete='on'
 					cols= '25'
 					rows='3'
 					typeComponent='textarea'

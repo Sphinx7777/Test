@@ -1,3 +1,11 @@
+@mixin bRad($br){
+	border-radius: $br
+}
+$shad: 0 1px 4px rgba(0, 0, 0, .3),
+-23px 0 20px -23px rgba(0, 0, 0, .6),
+23px 0 20px -23px rgba(0, 0, 0, .6),
+inset 0 0 40px rgba(0, 0, 0, .1);
+
 .todoWrapper {
 	max-width: 50rem;
 	margin: 0 auto;
@@ -9,57 +17,59 @@
 		.formWrapper {
 			display: inline-block;
 			padding: 0.5rem;
-			box-shadow: 0 1px 4px rgba(0, 0, 0, .3),
-			-23px 0 20px -23px rgba(0, 0, 0, .6),
-			23px 0 20px -23px rgba(0, 0, 0, .6),
-			inset 0 0 40px rgba(0, 0, 0, .1);
-			input 	{
+			box-shadow: $shad;
+
+			input {
 				margin: 0.5rem 0 0.5rem 0;
 			}
+
 			input[type=text] {
 				width: 15rem;
 				height: 1.2rem;
 				font-size: 1.2rem;
 				padding: 0.2rem;
-				border-radius: 0.5rem;
+				@include bRad (0.5rem);
 				outline: none;
 			}
+
 			textarea {
-				border-radius: 0.5rem;
+				@include bRad (0.5rem);
 				outline: none;
 				font-size: 1.5rem;
 
 			}
+
 			.closeForm {
 				text-align: right;
 				padding-right: 1rem;
-
 
 				.closeFormBtn {
 					color: red;
 					font-weight: bold;
 					outline: none;
 					cursor: pointer;
-
-
-
 				}
-
 			}
 		}
-
 	}
 
 	.todo {
 		margin-top: 3rem;
-		border-radius: 1rem;
+		@include bRad (1rem);
 		outline: none;
 		background-color: rgba(0, 0, 0, .1);
-		box-shadow: 0 1px 4px rgba(0, 0, 0, .3),
-		-23px 0 20px -23px rgba(0, 0, 0, .6),
-		23px 0 20px -23px rgba(0, 0, 0, .6),
-		inset 0 0 40px rgba(0, 0, 0, .1);
+		box-shadow: $shad;
 
+		.allMark {
+			display: flex;
+			align-content: center;
+			padding-left: 3rem;
+
+			.allMarkCheck {
+				zoom: 1.5;
+				cursor: pointer;
+			}
+		}
 
 		.todoButtons {
 			display: flex;
@@ -69,25 +79,25 @@
 				max-width: 1.5rem;
 			}
 
-			.todoBtnAdd,.todoBtnDell {
+			.todoBtnAdd, .todoBtnDell {
 				border: 1px solid white;
 				background-color: rgba(0, 0, 0, .4);
 				font-size: 1.2rem;
 				font-weight: bold;
-				border-radius: 1rem;
+				@include bRad (1rem);
 				outline: none;
 				padding: 0.5rem;
 				margin-right: 1rem;
 				margin-bottom: 1rem;
 				cursor: pointer;
 				color: white;
+				&:hover {
+					background: rgba(0, 0, 0, .2);
+					color: black;
+					border: 1px solid black;
+				}
 			}
 
-			.todoBtnAdd:hover,.todoBtnDell:hover {
-				background: rgba(0, 0, 0, .2);
-				color: black;
-				border: 1px solid black;
-			}
 			.todoBtnDell:disabled {
 				border: 1px solid grey;
 				background: rgba(0, 0, 0, .2);
@@ -118,7 +128,7 @@
 
 					.inputWrapper {
 						border: 4px solid black;
-						border-radius: 0.5rem;
+						@include bRad (0.5rem);
 						outline: none;
 
 
@@ -145,24 +155,20 @@
 					.taskEdit {
 						display: flex;
 						padding: 0.5rem;
-						border-radius: 0.5rem;
+						@include bRad (0.5rem);
 						outline: none;
 						border: 4px solid black;
 						font-weight: bold;
 						cursor: pointer;
+						&:hover {
+							background: rgba(0, 0, 0, .1);
+						}
 
 						.settingsIcon {
 							max-width: 1.5rem;
 						}
 					}
-
-					.taskEdit:hover {
-						background: rgba(0, 0, 0, .1);
-					}
-
-
 				}
-
 			}
 		}
 
@@ -174,7 +180,7 @@
 			.allCount {
 				padding: 0.2rem;
 				border: 1px solid black;
-				border-radius: 0.5rem;
+				@include bRad (0.5rem);
 				outline: none;
 				margin-left: 0.5rem;
 				cursor: pointer;
@@ -190,16 +196,14 @@
 				.filterItem {
 					padding: 0.2rem;
 					border: 1px solid black;
-					border-radius: 0.5rem;
+					@include bRad (0.5rem);
 					outline: none;
 					margin-right: 0.5rem;
 					cursor: pointer;
+					&:hover {
+						background: rgba(0, 0, 0, .1);
+					}
 				}
-
-				.filterItem:hover {
-					background: rgba(0, 0, 0, .1);
-				}
-
 			}
 		}
 	}
@@ -212,7 +216,7 @@
 
 			.todoButtons {
 
-				.todoBtnAdd,.todoBtnDell {
+				.todoBtnAdd, .todoBtnDell {
 					border: 1px solid white;
 					font-size: 1rem;
 					margin-right: 0.5rem;
@@ -255,7 +259,7 @@
 			.todoButtons {
 				flex-direction: column;
 
-				.todoBtnAdd,.todoBtnDell {
+				.todoBtnAdd, .todoBtnDell {
 					margin: 0 auto 0.5rem auto;
 
 				}

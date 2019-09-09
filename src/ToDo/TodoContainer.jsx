@@ -33,4 +33,5 @@ let mapStateToProps = (state)=>({
 });
 
 export default connect(mapStateToProps,
-	{addNewTask,removeTask,changeTask,changeTaskStatus,changeStatusAllTasks,changeStatusTaskEditForm})(TodoContainer);
+	{addNewTask,removeTask,changeTask,changeTaskStatus,
+		changeStatusAllTasks,changeStatusTaskEditForm,})(TodoContainer);

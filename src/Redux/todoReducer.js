@@ -8,15 +8,16 @@ const MARK_ALL_TASKS = '/todoReducer___MARK_ALL_TASKS';
 
 let initialState = {
 	tasks: [
-		{id: 1, name: 'one', description: 'learn React', status: false},
+		{id: 1, name: 'one', description: 'learn React', status: true},
 		{id: 2, name: 'two', description: 'learn JS', status: false},
-		{id: 3, name: 'three', description: 'learn Redux', status: false}
+		{id: 3, name: 'three', description: 'learn Redux', status: false},
+		{id: 4, name: 'four', description: 'Посадить дерево', status: true},
+		{id: 5, name: 'five', description: 'Построить дом', status: false},
+		{id: 6, name: 'sex', description: 'Вырастить сына', status: true}
 	],
 	filterTasksStatus: null,
 	editMode: false,
 	allMark: false,
-
-
 };
 
 
@@ -71,6 +72,7 @@ const setChangeTask = (taskDesc) => ({type: CHANGE_TASK, ...taskDesc});
 const setChangeTaskStatus = (taskStatus) => ({type: CHANGE_TASK_STATUS, ...taskStatus});
 const setEditModeStatus = (status) => ({type: EDIT_MODE_STATUS, status});
 const setStatusMarkAllTasks = (status) => ({type: MARK_ALL_TASKS, status});
+
 
 
 export const addNewTask = (task) => {

@@ -1,8 +1,9 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import s from './ToDo.module.scss'
 import FormForTask from "./FormForTask";
 import {ButtonHeaderToDo, MarkAllTasks} from "./ButtonHeaderToDo";
 import {Task} from "./Task";
+
 
 
 
@@ -17,11 +18,25 @@ const Todo = ({tasks, addNewTask, removeTask, changeTask, changeTaskStatus,
   let completedTask = tasks.filter(t=>t.status);
 
 
+  useEffect(()=>{
+		setNewTasks(tasks)
+	},[tasks]);
 
-
-	return (
+  return (
 		<div className={s.todoWrapper}>
 			<div className={s.todo}>
+				<div className={s.filterWrapper}>
+					<div className={s.allCount}>Общее количество : {tasks.length}
+					</div>
+					<div className={s.filter}>
+						<div className={s.filterItem} onClick={() =>setNewTasks(tasks) }>Все
+						</div>
+						<div className={s.filterItem} onClick={() => setNewTasks(activeTask)}>Активные
+						</div>
+						<div className={s.filterItem} onClick={() =>setNewTasks(completedTask)}>Завершенные
+						</div>
+					</div>
+				</div>
 				<div><h2>Список дел которые надо успеть ...</h2></div>
 				<ButtonHeaderToDo {...{tasks,removeTask,changeStatusTaskEditForm}}/>
 				{editMode && <div className={s.formForTask}>
@@ -33,20 +48,6 @@ const Todo = ({tasks, addNewTask, removeTask, changeTask, changeTaskStatus,
 						<Task {...{newTasks,changeTask, changeTaskStatus}}/>
 					</div>
 				</div>
-
-
-				<div className={s.footer}>
-					<div className={s.allCount}>Общее количество : {tasks.length}</div>
-					<div className={s.filter}>
-						<div className={s.filterItem} onClick={() =>setNewTasks(tasks) }>Все
-						</div>
-						<div className={s.filterItem} onClick={() => setNewTasks(activeTask)}>Активные
-						</div>
-						<div className={s.filterItem} onClick={() =>setNewTasks(completedTask)}>Завершенные
-						</div>
-					</div>
-				</div>
-
 
 			</div>
 		</div>

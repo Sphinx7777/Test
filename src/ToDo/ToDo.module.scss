@@ -161,12 +161,17 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 							background: rgba(0, 0, 0, .1);
 						}
 
+
 						.taskStatus {
 							display: inline-block;
 							zoom: 2;
 							cursor: pointer;
 						}
 					}
+					.inputWrapper.changed {
+						background-color: lawngreen;
+					}
+
 
 					.taskDescription {
 						display: block;
@@ -205,10 +210,10 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 			}
 		}
 
-		.footer {
+		.filterWrapper {
 			display: flex;
 			justify-content: space-between;
-			padding-bottom: 0.5rem;
+			padding: 0.5rem;
 
 			.allCount {
 				padding: 0.2rem;
@@ -278,7 +283,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				}
 			}
 
-			.footer {
+			.filterWrapper {
 				flex-direction: column;
 
 				.filter {

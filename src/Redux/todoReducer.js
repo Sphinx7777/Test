@@ -14,7 +14,7 @@ let initialState = {
 		{id: 4, name: 'four', description: 'Посадить дерево', status: true},
 		{id: 5, name: 'five', description: 'Построить дом', status: false},
 		{id: 6, name: 'sex', description: 'Вырастить сына', status: true}
-	],
+		],
 	filterTasksStatus: null,
 	editMode: false,
 	allMark: false,

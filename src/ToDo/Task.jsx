@@ -19,7 +19,7 @@ export const Task = ({newTasks,changeTask, changeTaskStatus}) => {
 				return (<div key={t.id + i}>
 						<div className={s.taskName}>{t.name}</div>
 						<div className={s.task}>
-							<div className={s.inputWrapper}>
+							<div className={!t.status ? s.inputWrapper : s.inputWrapper +' '+ s.changed}>
 								<input className={s.taskStatus}
 											 type="checkbox"
 											 checked={t.status}

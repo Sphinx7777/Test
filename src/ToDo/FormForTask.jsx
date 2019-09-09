@@ -6,6 +6,8 @@ import {Input} from "../FormComponents/Input";
 
 const FormForTask = (props) => {
 	const {handleSubmit, pristine, reset, submitting,onSubmit,changeStatusTaskEditForm} = props;
+
+
 	return (
 		<div className={s.formWrapper}>
 			<form onSubmit={handleSubmit(onSubmit)}>

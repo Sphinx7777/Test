@@ -4,20 +4,26 @@ import settings from './../image/Settings.ico'
 import add from './../image/add.ico'
 
 
-export const Task = ({newTasks,changeTask, changeTaskStatus}) => {
+export const Task = ({newTasks,changeTask, changeTaskStatus,
+											 setToogleEditTask,setCloseEditTask,editTask,
+											 editDescriptionStatus,openEditTaskDescription}) => {
 	let [editValue, setEditValue] = useState('');
-	let [editText, setEditText] = useState(false);
+
 	let setChangedText = (id) => {
 		editValue.length > 1 &&
 		changeTask(id, editValue);
-		setEditText(false);
 	};
+
 
 	return (
 		<>
 			{newTasks.map((t, i) => {
-				return (<div key={t.id + i}>
-						<div className={s.taskName}>{t.name}</div>
+				return (
+					<div key={t.id + i} className={s.taskWrapper}>
+						<div className={s.taskName}>
+							<div><span>Название : </span><span className={s.name}>{t.name}</span></div>
+							<div><span>Дата создания : </span><span className={s.date}>{t.createDate}</span></div>
+						</div>
 						<div className={s.task}>
 							<div className={!t.status ? s.inputWrapper : s.inputWrapper +' '+ s.changed}>
 								<input className={s.taskStatus}
@@ -27,27 +33,30 @@ export const Task = ({newTasks,changeTask, changeTaskStatus}) => {
 												 changeTaskStatus(t.id, event.target.checked)
 											 }}/>
 							</div>
-							{!editText ? <span
+							{!editDescriptionStatus ? <span
 									className={!t.status ? s.taskDescription : s.taskDescription + ' ' + s.taskDescriptionOff}>
 											{t.description ? t.description : '--------------------------'}
 										</span>
 								: <div className={s.areaWrapper}>
-											<textarea className={s.area} cols='20' rows='3'
+											<textarea className={s.area} cols='50' rows='3'
 																defaultValue={t.description} onChange={(e) => {
 												setEditValue(e.currentTarget.value)
 											}}/>
 								</div>
 							}
-							{!editText ? <span className={s.taskEdit} title='Редактировать'
+							{!editDescriptionStatus ? <span className={s.taskEdit} title='Редактировать'
 																 onClick={() =>
-																	 setEditText(true)}>
+																	 editTask(t.id,true)}>
 												<img className={s.settingsIcon} src={settings} alt="Редактировать"/>
 									</span>
-								: <span className={s.taskEdit} title='Сохранить'
-												onClick={() =>
-													setChangedText(t.id)}>
+								: <div className={s.edit}>
+									<span className={s.closeEdit} onClick={()=>setToogleEditTask(false)} title='Закрыть'>X</span>
+									<span className={s.taskEdit} title='Сохранить'
+														 onClick={() =>
+															 setChangedText(t.id)}>
 												<img className={s.settingsIcon} src={add} alt="Сохранить"/>
-									</span>}
+									</span></div>}
+
 						</div>
 					</div>
 				)

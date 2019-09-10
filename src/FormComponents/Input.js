@@ -3,7 +3,7 @@ import React from 'react'
 
 export const Input = (props) => {
 
-let {input, label, type, autoFocus, typeComponent, cols, rows ,meta: { touched, error, warning }}=props;
+let {input, label, type, autoFocus, typeComponent,cols, rows ,meta: { touched, error, warning }}=props;
 
 
 	return (

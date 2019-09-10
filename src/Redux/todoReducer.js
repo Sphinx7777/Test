@@ -4,20 +4,24 @@ const CHANGE_TASK = '/todoReducer___CHANGE_TASK';
 const CHANGE_TASK_STATUS = '/todoReducer___CHANGE_TASK_STATUS';
 const EDIT_MODE_STATUS = '/todoReducer___EDIT_MODE_STATUS';
 const MARK_ALL_TASKS = '/todoReducer___MARK_ALL_TASKS';
+const SEARCH_TASK = '/todoReducer___SEARCH_TASK';
+const OPEN_TASK_FOR_EDIT_DESCRIPTION = '/todoReducer___OPEN_TASK_FOR_EDIT_DESCRIPTION';
+const CLOSE_EDIT_TASK = '/todoReducer___CLOSE_EDIT_TASK';
 
 
 let initialState = {
 	tasks: [
-		{id: 1, name: 'one', description: 'learn React', status: true},
-		{id: 2, name: 'two', description: 'learn JS', status: false},
-		{id: 3, name: 'three', description: 'learn Redux', status: false},
-		{id: 4, name: 'four', description: 'Посадить дерево', status: true},
-		{id: 5, name: 'five', description: 'Построить дом', status: false},
-		{id: 6, name: 'sex', description: 'Вырастить сына', status: true}
+		{id: 1, name: 'one', description: 'learn React', status: true,createDate:"16 августа 2019 г. 16:04"},
+		{id: 2, name: 'two', description: 'learn JS', status: false,createDate:"10 сентября 2019 г. 22:12"},
+		{id: 3, name: 'three', description: 'learn Redux', status: false,createDate:"14 ноября 2019 г. 11:23"},
+		{id: 4, name: 'four', description: 'Посадить дерево', status: true,createDate:"23 января 2019 г. 18:37"},
+		{id: 5, name: 'five', description: 'Построить дом', status: false,createDate:"31 декабря 2019 г. 12:11"},
+		{id: 6, name: 'sex', description: 'Вырастить сына', status: true,createDate:"03 мая 2008 г. 23:55"}
 		],
 	filterTasksStatus: null,
 	editMode: false,
 	allMark: false,
+	editDescriptionStatus: false
 };
 
 
@@ -32,6 +36,13 @@ const todoReducer = (state = initialState, action) => {
 		case REMOVE_CHANGED_TASK: {
 			return {...state,tasks:state.tasks.filter(t=>t.status!==true),allMark: false
 			}
+		}
+		case SEARCH_TASK: {
+			return {...state,searchTask:state.tasks.filter(t=>t.name===action.name)
+			}
+		}
+		case CLOSE_EDIT_TASK: {
+			return {...state,editDescriptionStatus: action.status}
 		}
 		case CHANGE_TASK: {
 			return {
@@ -72,6 +83,9 @@ const setChangeTask = (taskDesc) => ({type: CHANGE_TASK, ...taskDesc});
 const setChangeTaskStatus = (taskStatus) => ({type: CHANGE_TASK_STATUS, ...taskStatus});
 const setEditModeStatus = (status) => ({type: EDIT_MODE_STATUS, status});
 const setStatusMarkAllTasks = (status) => ({type: MARK_ALL_TASKS, status});
+const setSearchResult = (name) => ({type: SEARCH_TASK, name});
+const setEditModeChangeDescription = (status) => ({type: OPEN_TASK_FOR_EDIT_DESCRIPTION, ...status});
+export const setToogleEditTask = (status) => ({type: CLOSE_EDIT_TASK,status});
 
 
 
@@ -80,10 +94,19 @@ export const addNewTask = (task) => {
 		dispatch(setNewTask(task));
 		dispatch(setEditModeStatus(false));
 	}
+};export const openEditTaskDescription = (id,status) => {
+	return (dispatch) => {
+		dispatch(setEditModeChangeDescription({id,status}));
+	}
 };
 export const changeStatusTaskEditForm = (status) => {
 	return (dispatch) => {
 		dispatch(setEditModeStatus(status));
+	}
+};
+export const searchTask = (name) => {
+	return (dispatch) => {
+		dispatch(setSearchResult(name));
 	}
 };
 export const changeStatusAllTasks = (status) => {
@@ -99,11 +122,13 @@ export const removeTask = (id) => {
 export const changeTask = (id, description) => {
 	return (dispatch) => {
 		dispatch(setChangeTask({id, description}));
+		dispatch(setToogleEditTask(false));
 	}
 };
 export const changeTaskStatus = (id, status) => {
 	return (dispatch) => {
 		dispatch(setChangeTaskStatus({id, status}));
+		dispatch(setToogleEditTask(false));
 	}
 };
 

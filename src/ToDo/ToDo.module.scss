@@ -1,6 +1,8 @@
 @mixin bRad($br) {
-	border-radius: $br
+	border-radius: $br;
+	outline: none;
 }
+
 
 $shad: 0 1px 4px rgba(0, 0, 0, .3),
 -23px 0 20px -23px rgba(0, 0, 0, .6),
@@ -30,13 +32,13 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				font-size: 1.2rem;
 				padding: 0.2rem;
 				@include bRad (0.5rem);
-				outline: none;
 			}
 
 			textarea {
 				@include bRad (0.5rem);
-				outline: none;
-				font-size: 1.5rem;
+				font-size: 1.4rem;
+				resize: none;
+
 
 			}
 
@@ -46,9 +48,11 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 				.closeFormBtn {
 					color: red;
-					font-weight: bold;
-					outline: none;
+					padding: 0 6px;
+					margin: 0 0.5rem;
 					cursor: pointer;
+					border: 1px solid red;
+					@include bRad (100%);
 				}
 			}
 		}
@@ -57,18 +61,50 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 	.todo {
 		margin-top: 3rem;
 		@include bRad (1rem);
-		outline: none;
 		background-color: rgba(0, 0, 0, .1);
 		box-shadow: $shad;
 
-		.allMark {
+		.markAndSearchWrapper {
 			display: flex;
-			align-content: center;
-			padding-left: 3rem;
+			justify-content: space-between;
 
-			.allMarkCheck {
-				zoom: 1.5;
-				cursor: pointer;
+			.allMark {
+				display: flex;
+				align-content: center;
+				padding-left: 6%;
+
+				.allMarkCheck {
+					zoom: 1.5;
+					cursor: pointer;
+
+				}
+			}
+
+			.searchWrapper {
+				display: flex;
+				padding-right: 6%;
+				align-items: center;
+
+				.closeSearch {
+					color: red;
+					padding: 0 6px;
+					margin: 0 0.5rem;
+					cursor: pointer;
+					border: 1px solid red;
+					@include bRad (100%);
+				}
+
+				.search {
+					@include bRad (0.5rem);
+				}
+
+				.searchIcon {
+					max-width: 1.5rem;
+					outline: none;
+					cursor: pointer;
+					padding-left: 0.5rem;
+
+				}
 			}
 		}
 
@@ -82,28 +118,25 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 			.todoBtnAdd, .todoBtnDell {
 				border: 1px solid white;
-				background-color: rgba(0, 0, 0, .4);
+				background-color: rgba(0, 0, 0, .2);
 				font-size: 1.2rem;
 				font-weight: bold;
 				@include bRad (1rem);
-				outline: none;
 				padding: 0.5rem;
 				margin-right: 1rem;
 				margin-bottom: 1rem;
 				cursor: pointer;
 				color: white;
 
-
 				&:hover {
-					background: rgba(0, 0, 0, .2);
+					box-shadow: $shad;
 					color: black;
-					border: 1px solid black;
 				}
 			}
 
 			.todoBtnDell:disabled {
 				border: 1px solid grey;
-				background: rgba(0, 0, 0, .2);
+				background: rgba(0, 0, 0, 0.1);
 				color: white;
 			}
 		}
@@ -114,96 +147,147 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				max-width: 90%;
 				margin: 1rem auto;
 
-				.taskName {
-					text-align: left;
-					padding: 0.2rem 0.6rem;
-					font-weight: bold;
-				}
+				.taskWrapper {
+					box-shadow: $shad;
+					background-color: rgba(0, 0, 0, 0.1);
 
-				.task {
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-					padding: 0.5rem;
-					margin-bottom: 1rem;
-					border-bottom: 1px solid black;
-					border-bottom-left-radius: 0.5rem;
-					border-bottom-right-radius: 0.5rem;
-
-					.areaWrapper {
-
-
-						.area {
-              max-width: 20rem;
-							max-height: 10rem;
-
-							@media screen and (max-width: 520px) {
-								max-width: 15rem;
-								max-height: 7rem;
-							}
-							@media screen and (max-width: 520px) {
-								max-width: 10rem;
-								max-height: 4rem;
-							}
-							@media screen and (max-width: 350px) {
-								max-width: 6rem;
-								max-height: 2rem;
-							}
-						}
-
-					}
-
-
-					.inputWrapper {
-						@include bRad (0.5rem);
-						outline: none;
-						&:hover {
-							background: rgba(0, 0, 0, .1);
-						}
-
-
-						.taskStatus {
-							display: inline-block;
-							zoom: 2;
-							cursor: pointer;
-						}
-					}
-					.inputWrapper.changed {
-						background-color: lawngreen;
-					}
-
-
-					.taskDescription {
-						display: block;
-						font-style: italic;
-						text-decoration: underline;
-					}
-
-					.taskDescription.taskDescriptionOff {
-						text-decoration: line-through;
-					}
-
-					.closeEdit {
-						color: red;
-						font-weight: bold;
-						margin-left: 0.5rem;
-					}
-
-
-					.taskEdit {
+					.taskName {
 						display: flex;
-						padding: 0.5rem;
-						@include bRad (0.5rem);
-						outline: none;
-						font-weight: bold;
-						cursor: pointer;
+						justify-content: space-between;
+						padding: 0.2rem 0.6rem;
+						margin-bottom: 1.5rem;
+						border-top: 1px solid black;
+						border-top-left-radius: 0.5rem;
+						border-top-right-radius: 0.5rem;
 
-						&:hover {
-							background: rgba(0, 0, 0, .1);
+						.date,.name {
+							font-weight: bold;
+							max-width: 100%;
+						}
+						.name {
+							word-break:break-all;
 						}
 
-						.settingsIcon {
-							max-width: 1.5rem;
+					}
+
+					.task {
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						padding: 0.5rem;
+						margin-bottom: 1rem;
+						border-bottom: 1px solid black;
+						border-bottom-left-radius: 0.5rem;
+						border-bottom-right-radius: 0.5rem;
+
+
+						.areaWrapper {
+							max-width: 100%;
+
+							.area {
+								max-height: 10rem;
+								@include bRad (0.5rem);
+								box-shadow: $shad;
+								resize: none;
+
+
+								@media screen and (max-width: 600px) {
+									max-width: 18rem;
+									max-height: 7rem;
+								}@media screen and (max-width: 560px) {
+									max-width: 15rem;
+									max-height: 7rem;
+								}@media screen and (max-width: 540px) {
+									max-width: 13rem;
+									max-height: 7rem;
+								}
+								@media screen and (max-width: 520px) {
+								max-width: 11rem;
+								max-height: 3rem;
+							}
+								@media screen and (max-width: 500px) {
+									max-width: 9rem;
+									max-height: 2rem;
+								}
+								@media screen and (max-width: 450px) {
+									max-width: 7rem;
+									max-height: 2rem;
+								}
+								@media screen and (max-width: 320px) {
+									max-width: 5rem;
+									max-height: 2rem;
+								}
+							}
+
+						}
+
+
+						.inputWrapper {
+							@include bRad (0.5rem);
+
+							&:hover {
+								background: rgba(0, 0, 0, .1);
+							}
+
+
+							.taskStatus {
+								display: inline-block;
+								zoom: 2;
+								cursor: pointer;
+							}
+						}
+
+						.inputWrapper.changed {
+							background-color: lawngreen;
+						}
+
+
+						.taskDescription {
+							display: block;
+							max-width: 100%;
+							word-break:break-all;
+							font-style: italic;
+							font-size: 1.2rem;
+
+						}@media screen and (max-width: 500px) {
+
+						.taskDescription {
+							font-size: 1rem;
+						}
+					}
+
+						.taskDescription.taskDescriptionOff {
+							text-decoration: line-through;
+						}
+
+						.closeEdit {
+							color: red;
+							padding: 0 6px;
+							margin: 0 0.5rem;
+							cursor: pointer;
+							border: 1px solid red;
+							@include bRad (100%);
+						}
+
+						.edit {
+						display: flex;
+							align-items: center;
+						}
+
+						.taskEdit {
+							display: flex;
+							padding: 0.5rem;
+							@include bRad (0.5rem);
+							font-weight: bold;
+							cursor: pointer;
+
+							&:hover {
+								background: rgba(0, 0, 0, .1);
+							}
+
+							.settingsIcon {
+								max-width: 1.5rem;
+							}
 						}
 					}
 				}
@@ -217,15 +301,10 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 			.allCount {
 				padding: 0.2rem;
-				border: 1px solid black;
+				box-shadow: $shad;
 				@include bRad (0.5rem);
-				outline: none;
 				margin-left: 0.5rem;
 				cursor: pointer;
-			}
-
-			.allCount:hover {
-				background: rgba(0, 0, 0, .1);
 			}
 
 			.filter {
@@ -233,17 +312,42 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 				.filterItem {
 					padding: 0.2rem;
-					border: 1px solid black;
 					@include bRad (0.5rem);
-					outline: none;
 					margin-right: 0.5rem;
 					cursor: pointer;
+					box-shadow: $shad;
 
 					&:hover {
 						background: rgba(0, 0, 0, .1);
 					}
 				}
 			}
+		}
+
+		@media screen and (max-width: 580px) {
+			.filterWrapper {
+				flex-direction: column;
+
+				.filter, .allCount {
+					margin: 0 auto;
+				}
+
+				.filter {
+
+					.filterItem {
+						margin-right: 1.3rem;
+
+						&:last-child {
+							margin-right: 0;
+						}
+					}
+				}
+
+				.allCount {
+					margin-bottom: 0.5rem;
+				}
+			}
+
 		}
 	}
 }

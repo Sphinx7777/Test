@@ -12,6 +12,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 .todoWrapper {
 	max-width: 60rem;
 	margin: 0 auto;
+	@include bRad (0.5rem);
 
 	.formForTask {
 		display: flex;
@@ -63,6 +64,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 		@include bRad (1rem);
 		background-color: rgba(0, 0, 0, .1);
 		box-shadow: $shad;
+		@include bRad (0.5rem);
 
 		.markAndSearchWrapper {
 			display: flex;
@@ -142,6 +144,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 		}
 
 		.todoList {
+			@include bRad (0.5rem);
 
 			.listWrapper {
 				max-width: 90%;
@@ -161,11 +164,16 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 						border-top-left-radius: 0.5rem;
 						border-top-right-radius: 0.5rem;
 
-						.date,.name {
+						.editName {
+							@include bRad (0.5rem);
+						}
+
+						.date, .name {
 							display: inline-block;
 							font-weight: bold;
 							max-width: 100%;
 						}
+
 						.name {
 
 						}
@@ -196,17 +204,19 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 								@media screen and (max-width: 600px) {
 									max-width: 18rem;
 									max-height: 7rem;
-								}@media screen and (max-width: 560px) {
+								}
+								@media screen and (max-width: 560px) {
 									max-width: 15rem;
 									max-height: 7rem;
-								}@media screen and (max-width: 540px) {
+								}
+								@media screen and (max-width: 540px) {
 									max-width: 13rem;
 									max-height: 7rem;
 								}
 								@media screen and (max-width: 520px) {
-								max-width: 11rem;
-								max-height: 3rem;
-							}
+									max-width: 11rem;
+									max-height: 3rem;
+								}
 								@media screen and (max-width: 500px) {
 									max-width: 9rem;
 									max-height: 2rem;
@@ -247,16 +257,18 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 						.taskDescription {
 							display: block;
 							max-width: 100%;
-							word-break:break-all;
+							word-break: break-all;
 							font-style: italic;
 							font-size: 1.2rem;
 
-						}@media screen and (max-width: 500px) {
-
-						.taskDescription {
-							font-size: 1rem;
 						}
-					}
+
+						@media screen and (max-width: 500px) {
+
+							.taskDescription {
+								font-size: 1rem;
+							}
+						}
 
 						.taskDescription.taskDescriptionOff {
 							text-decoration: line-through;
@@ -272,7 +284,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 						}
 
 						.edit {
-						display: flex;
+							display: flex;
 							align-items: center;
 						}
 
@@ -290,6 +302,59 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 							.settingsIcon {
 								max-width: 1.5rem;
 							}
+						}
+					}
+				}
+			}
+
+			.footerWrapper {
+				@include bRad (0.5rem);
+
+				.footer {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					padding: 0.5rem;
+					box-shadow: $shad;
+					margin-top: 2rem;
+					@include bRad (0.5rem);
+
+
+					.LinkWrapper {
+						display: flex;
+						align-items: center;
+
+						.link {
+							text-decoration: none;
+
+							.linkImg {
+								display: flex;
+								flex-direction: column;
+								align-content: center;
+								margin: 0 0.5rem;
+								max-width: 2.5rem;
+								border: 1px solid blue;
+								@include bRad (100%);
+
+
+								.linkTitle {
+
+								}
+						}
+
+
+						}
+					}
+
+					.photoWrapper {
+						display: flex;
+						align-items: center;
+
+						.photo {
+							margin: 0 0.5rem;
+							max-width: 3.0rem;
+							border: 1px solid blue;
+							@include bRad (100%);
 						}
 					}
 				}

@@ -43,6 +43,7 @@ const todoReducer = (state = initialState, action) => {
 				...state, tasks: state.tasks.map(t => {
 					if (t.id === action.id) {
 						t.description = action.description;
+						t.name = action.name;
 						return t;
 					}
 					return t;
@@ -103,9 +104,9 @@ export const removeTask = (id) => {
 		dispatch(setRemoveTask(id));
 	}
 };
-export const changeTask = (id, description) => {
+export const changeTask = (id, description,name) => {
 	return (dispatch) => {
-		dispatch(setChangeTask({id, description}));
+		dispatch(setChangeTask({id, description,name}));
 		dispatch(setToggleEditTask(false));
 	}
 };

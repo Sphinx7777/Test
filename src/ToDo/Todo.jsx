@@ -4,6 +4,10 @@ import FormForTask from "./FormForTask";
 import {ButtonHeaderToDo, MarkAllTasks} from "./ButtonHeaderToDo";
 import {Task} from "./Task";
 import {SearchNameTask} from "./SearchNameTask";
+import brother from "./../image/Sfinx.jpg";
+import telegram from "./../image/telegram.ico";
+import lamp from "./../image/lamp.ico";
+import {NavLink} from "react-router-dom";
 
 
 
@@ -42,6 +46,8 @@ export const Todo = ({tasks,addNewTask,removeTask,changeTask,changeTaskStatus,
 		setNewTasks(tasks)
 	},[tasks]);
 
+
+
   return (
 		<div className={s.todoWrapper}>
 			<div className={s.todo}>
@@ -70,6 +76,22 @@ export const Todo = ({tasks,addNewTask,removeTask,changeTask,changeTaskStatus,
 				<div className={s.todoList}>
 					<div className={s.listWrapper}>
 						<Task {...{newTasks,changeTask,editTask,changeTaskStatus,setToggleEditTask,editDescriptionStatus}}/>
+					</div>
+					<div className={s.footerWrapper}>
+						<footer className={s.footer}>
+							<div className={s.LinkWrapper}>© «Онищенко С.М.», 2019 -
+								<NavLink className={s.link} target='_blank' to="/telegram">
+									<img className={s.linkImg} src={telegram} alt="Телеграм"/><span className={s.linkTitle}>Telegram</span>
+								</NavLink>
+								<NavLink className={s.link} target='_blank' to="/djinni">
+									<img className={s.linkImg} src={lamp} alt="Джинни"/><span className={s.linkTitle}>Djinni</span>
+								</NavLink>
+							</div>
+							<div className={s.photoWrapper}>
+								<span>Будете копипастить пожалуюсь братану</span>
+								<img className={s.photo} src={brother} alt="Brother"/>
+							</div>
+						</footer>
 					</div>
 				</div>
 			</div>

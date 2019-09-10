@@ -5,15 +5,23 @@ import {
 	changeStatusAllTasks,
 	changeStatusTaskEditForm,
 	changeTask,
-	changeTaskStatus, openEditTaskDescription,
-	removeTask, searchTask, setToogleEditTask
+	changeTaskStatus,
+	removeTask,setToogleEditTask
 } from "../Redux/todoReducer";
 import {Todo} from "./Todo";
 
 
 
 class TodoContainer extends Component {
+
+	componentDidMount() {
+		/*let saveTasks = JSON.stringify(this.props.tasks);
+		localStorage.setItem('tasks',saveTasks);*/
+	}
+
 	render() {
+
+
 		return (
 			<Todo {...this.props}/>
 		)
@@ -29,4 +37,6 @@ let mapStateToProps = (state)=>({
 
 export default connect(mapStateToProps,
 	{addNewTask,removeTask,changeTask,changeTaskStatus,
-		changeStatusAllTasks,changeStatusTaskEditForm,openEditTaskDescription,searchTask,setToogleEditTask})(TodoContainer);
+		changeStatusAllTasks,changeStatusTaskEditForm,setToogleEditTask})(TodoContainer);
+
+

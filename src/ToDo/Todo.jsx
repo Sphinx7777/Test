@@ -10,7 +10,7 @@ import {SearchNameTask} from "./SearchNameTask";
 
 export const Todo = ({tasks,addNewTask,removeTask,changeTask,changeTaskStatus,
 											 editMode,changeStatusTaskEditForm,allMark,changeStatusAllTasks,
-											 setToogleEditTask,editDescriptionStatus,openEditTaskDescription}) => {
+											 setToogleEditTask,editDescriptionStatus}) => {
 
 	let newDate = new Date();
 	let options = {
@@ -69,7 +69,7 @@ export const Todo = ({tasks,addNewTask,removeTask,changeTask,changeTaskStatus,
 
 				<div className={s.todoList}>
 					<div className={s.listWrapper}>
-						<Task {...{newTasks,changeTask,editTask,openEditTaskDescription, changeTaskStatus,setToogleEditTask,editDescriptionStatus}}/>
+						<Task {...{newTasks,changeTask,editTask,changeTaskStatus,setToogleEditTask,editDescriptionStatus}}/>
 					</div>
 				</div>
 			</div>

@@ -20,7 +20,7 @@ return (
 													searchTask(title)}}}
 
 		/>}
-		{searchMode && <span className={s.closeSearch} onClick={()=>setSearchMode(false)}>X</span>}
+
 		{searchMode ? <img className={s.searchIcon}
 												src={search}
 												alt="Поиск"
@@ -29,8 +29,8 @@ return (
 						src={search3}
 						alt="Открыть поисковую строку"
 						onClick={()=>{setSearchMode(!searchMode)}}
-		/>
-		}
+		/>}
+		{searchMode && <span className={s.closeSearch} onClick={()=>setSearchMode(false)}>X</span>}
 
 	</div>
 )

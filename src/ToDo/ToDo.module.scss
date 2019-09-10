@@ -10,7 +10,7 @@ $shad: 0 1px 4px rgba(0, 0, 0, .3),
 inset 0 0 40px rgba(0, 0, 0, .1);
 
 .todoWrapper {
-	max-width: 50rem;
+	max-width: 60rem;
 	margin: 0 auto;
 
 	.formForTask {
@@ -151,6 +151,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 					box-shadow: $shad;
 					background-color: rgba(0, 0, 0, 0.1);
 
+
 					.taskName {
 						display: flex;
 						justify-content: space-between;
@@ -161,11 +162,12 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 						border-top-right-radius: 0.5rem;
 
 						.date,.name {
+							display: inline-block;
 							font-weight: bold;
 							max-width: 100%;
 						}
 						.name {
-							word-break:break-all;
+
 						}
 
 					}

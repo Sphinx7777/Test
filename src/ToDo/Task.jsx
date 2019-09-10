@@ -6,7 +6,7 @@ import add from './../image/add.ico'
 
 export const Task = ({
 											 newTasks, changeTask, changeTaskStatus,
-											 setToogleEditTask,editTask,
+											 setToggleEditTask,editTask,
 											 editDescriptionStatus
 										 }) => {
 	let [editValue, setEditValue] = useState('');
@@ -23,7 +23,14 @@ export const Task = ({
 				return (
 					<div key={t.id + i} className={s.taskWrapper}>
 						<div className={s.taskName}>
+
+
+
 							<div><span>Название : </span><span className={s.name}>{t.name}</span></div>
+
+
+
+
 							<div><span>Дата создания : </span><span className={s.date}>{t.createDate}</span></div>
 						</div>
 						<div className={s.task}>
@@ -56,12 +63,14 @@ export const Task = ({
 												<img className={s.settingsIcon} src={settings} alt="Редактировать"/>
 									</span>
 								: <div className={s.edit}>
-									<span className={s.closeEdit} onClick={() => setToogleEditTask(false)} title='Закрыть'>X</span>
+
 									<span className={s.taskEdit} title='Сохранить'
 												onClick={() =>
 													setChangedText(t.id)}>
 												<img className={s.settingsIcon} src={add} alt="Сохранить"/>
-									</span></div>}
+									</span>
+									<span className={s.closeEdit} onClick={() => setToggleEditTask(false)} title='Закрыть'>X</span>
+								</div>}
 						</div>
 					</div>
 				)

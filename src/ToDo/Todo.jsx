@@ -10,7 +10,7 @@ import {SearchNameTask} from "./SearchNameTask";
 
 export const Todo = ({tasks,addNewTask,removeTask,changeTask,changeTaskStatus,
 											 editMode,changeStatusTaskEditForm,allMark,changeStatusAllTasks,
-											 setToogleEditTask,editDescriptionStatus}) => {
+											 setToggleEditTask,editDescriptionStatus}) => {
 
 	let newDate = new Date();
 	let options = {
@@ -35,7 +35,7 @@ export const Todo = ({tasks,addNewTask,removeTask,changeTask,changeTaskStatus,
   };
   let editTask=(id)=>{
 		setNewTasks(()=>tasks.filter(t=>t.id===id));
-		setToogleEditTask(true)
+		setToggleEditTask(true)
   };
 
   useEffect(()=>{
@@ -69,7 +69,7 @@ export const Todo = ({tasks,addNewTask,removeTask,changeTask,changeTaskStatus,
 
 				<div className={s.todoList}>
 					<div className={s.listWrapper}>
-						<Task {...{newTasks,changeTask,editTask,changeTaskStatus,setToogleEditTask,editDescriptionStatus}}/>
+						<Task {...{newTasks,changeTask,editTask,changeTaskStatus,setToggleEditTask,editDescriptionStatus}}/>
 					</div>
 				</div>
 			</div>

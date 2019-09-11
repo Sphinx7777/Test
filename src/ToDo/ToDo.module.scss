@@ -23,26 +23,36 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 			padding: 0.5rem;
 			box-shadow: $shad;
 
-			input {
-				margin: 0.5rem 0 0.5rem 0;
+			.fieldWrapper {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				margin-bottom: 0.5rem;
+
+				.error {
+					border: 1px solid red;
+					@include bRad (0.5rem);
+					color: red;
+					margin: 0.5rem auto;
+					padding: 2px;
+				}
+
+
+				input[type=text] {
+					width: 15rem;
+					height: 1.2rem;
+					font-size: 1.2rem;
+					margin: 0.5rem 0 0.5rem 0;
+					padding: 0.2rem;
+					@include bRad (0.5rem);
+				}
+
+				textarea {
+					@include bRad (0.5rem);
+					font-size: 1.4rem;
+					resize: none;
+				}
 			}
-
-			input[type=text] {
-				width: 15rem;
-				height: 1.2rem;
-				font-size: 1.2rem;
-				padding: 0.2rem;
-				@include bRad (0.5rem);
-			}
-
-			textarea {
-				@include bRad (0.5rem);
-				font-size: 1.4rem;
-				resize: none;
-
-
-			}
-
 			.closeForm {
 				text-align: right;
 				padding-right: 1rem;
@@ -50,7 +60,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				.closeFormBtn {
 					color: red;
 					padding: 0 6px;
-					margin: 0 0.5rem;
+
 					cursor: pointer;
 					border: 1px solid red;
 					@include bRad (100%);
@@ -123,7 +133,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				background-color: rgba(0, 0, 0, .2);
 				font-size: 1.2rem;
 				font-weight: bold;
-				@include bRad (1rem);
+				@include bRad (0.5rem);
 				padding: 0.5rem;
 				margin-right: 1rem;
 				margin-bottom: 1rem;
@@ -136,10 +146,11 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				}
 			}
 
-			.todoBtnDell:disabled {
+			.todoBtnDell:disabled,.todoBtnAdd:disabled {
 				border: 1px solid grey;
 				background: rgba(0, 0, 0, 0.1);
 				color: white;
+				box-shadow: none;
 			}
 		}
 
@@ -164,8 +175,13 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 						border-top-left-radius: 0.5rem;
 						border-top-right-radius: 0.5rem;
 
+						.fieldEditMode {
+							font-size: 0.8rem;
+						}
+
 						.editName {
 							@include bRad (0.5rem);
+							padding: 3px;
 						}
 
 						.date, .name {
@@ -193,6 +209,10 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 						.areaWrapper {
 							max-width: 100%;
+
+							.areadEditMode {
+								font-size: 0.8rem;
+							}
 
 							.area {
 								max-height: 10rem;
@@ -276,7 +296,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 						.closeEdit {
 							color: red;
-							padding: 0 6px;
+							padding: 2px 9px;
 							margin: 0 0.5rem;
 							cursor: pointer;
 							border: 1px solid red;
@@ -289,19 +309,23 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 						}
 
 						.taskEdit {
+							background-color: rgba(0, 0, 0, .2);
 							display: flex;
 							padding: 0.5rem;
 							@include bRad (0.5rem);
-							font-weight: bold;
 							cursor: pointer;
-
-							&:hover {
-								background: rgba(0, 0, 0, .1);
-							}
 
 							.settingsIcon {
 								max-width: 1.5rem;
 							}
+						}
+						.taskEdit:hover {
+							box-shadow: $shad;
+						}
+						.taskEdit:disabled {
+							box-shadow: none;
+							border: 1px solid white;
+							background: rgba(0, 0, 0, 0.1);
 						}
 					}
 				}
@@ -379,7 +403,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 				.filterItem {
 					padding: 0.2rem;
-					@include bRad (0.5rem);
+					@include bRad (0.3rem);
 					margin-right: 0.5rem;
 					cursor: pointer;
 					box-shadow: $shad;

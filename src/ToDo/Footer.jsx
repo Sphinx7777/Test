@@ -4,6 +4,7 @@ import {NavLink} from "react-router-dom";
 import telegram from "../image/telegram.ico";
 import lamp from "../image/lamp.ico";
 import brother from "../image/Sfinx.jpg";
+import git from "../image/git.ico";
 
 
 export const Footer = (props) => {
@@ -17,6 +18,9 @@ export const Footer = (props) => {
 					</NavLink>
 					<NavLink className={s.link} target='_blank' to="/djinni">
 						<img className={s.linkImg} src={lamp} alt="Джинни"/><span className={s.linkTitle}>Djinni</span>
+					</NavLink>
+					<NavLink className={s.link} target='_blank' to="/git">
+						<img className={s.linkImg} src={git} alt="Гитхаб"/><span className={s.linkTitle}>Git</span>
 					</NavLink>
 				</div>
 				<div className={s.photoWrapper}>

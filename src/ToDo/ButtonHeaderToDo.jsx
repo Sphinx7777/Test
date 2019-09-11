@@ -2,16 +2,16 @@ import React from 'react'
 import s from './ToDo.module.scss'
 
 
-export const ButtonHeaderToDo = ({tasks,removeTask,changeStatusTaskEditForm}) => {
+export const ButtonHeaderToDo = ({tasks,removeTask,editDescriptionStatus,changeStatusTaskEditForm}) => {
 	let statusBtn = tasks.every(t => t.status === false);
-
+let disableBtnAdd = tasks.length>=50;
 
 	return (
 		<div className={s.todoButtons}>
-			<button className={s.todoBtnAdd} onClick={() => {
+			<button className={s.todoBtnAdd} disabled={disableBtnAdd || editDescriptionStatus} onClick={() => {
 				changeStatusTaskEditForm(true)
-			}}>
-				Добавить новое задание
+			}}>{!disableBtnAdd ? 'Добавить новое задание' : 'Максимум 50 заданий'}
+
 			</button>
 			<button className={s.todoBtnDell} disabled={statusBtn} onClick={() => {
 				removeTask()

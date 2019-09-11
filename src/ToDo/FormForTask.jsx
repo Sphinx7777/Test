@@ -1,7 +1,13 @@
 import React from 'react'
 import s from './ToDo.module.scss'
 import {Field, reduxForm} from "redux-form";
-import {Input} from "../FormComponents/Input";
+import {TextField} from "../FormComponents/TextField";
+import {maxLength,required} from "../FormComponents/Validators";
+
+
+const maxLength200 = maxLength(200);
+const maxLength25 = maxLength(25);
+
 
 
 const FormForTask = (props) => {
@@ -10,28 +16,34 @@ const FormForTask = (props) => {
 
 	return (
 		<div className={s.formWrapper}>
-			<form onSubmit={handleSubmit(onSubmit)}>
-				<div>
-				<Field
-					typeComponent='input'
-					autoFocus={true}
-					name="name"
-					type="text"
-					component={Input}
-					label="Название"
-				/>
+			<form onSubmit={handleSubmit(onSubmit)} onKeyPress={(event)=>{if(event.key === 'Enter'){
+				handleSubmit()}}}>
+				<div className={s.fieldWrapper}>
+					<Field className={s.textField}
+								 typeComponent='input'
+								 autoFocus={false}
+								 placeholder='Min 1 && Max 25 symbols'
+								 name="name"
+								 type="text"
+								 maxLength='25'
+								 component={TextField}
+								 label="Название"
+								 validate={[required,maxLength25]}
+					/>
+					<Field className={s.textField}
+								 cols= '30'
+								 rows='3'
+								 placeholder='Min 1 && Max 200 symbols'
+								 typeComponent='textarea'
+								 name="description"
+								 type="text"
+								 component={TextField}
+								 label="Описание"
+								 validate={[required,maxLength200]}
+					/>
 				</div>
-				<div>
-				<Field
-					cols= '25'
-					rows='3'
-					typeComponent='textarea'
-					name="description"
-					type="text"
-					component={Input}
-					label="Описание"
-				/>
-				</div>
+
+
 				<div>
 					<button type="submit" disabled={submitting}>
 						Сохранить
@@ -40,7 +52,7 @@ const FormForTask = (props) => {
 						Очистить
 					</button>
 				</div>
-				<div className={s.closeForm} onClick={()=>{changeStatusTaskEditForm(false)}}><span className={s.closeFormBtn}>X</span></div>
+				<div className={s.closeForm} ><span onClick={()=>{changeStatusTaskEditForm(false)}} className={s.closeFormBtn}>X</span></div>
 			</form>
 		</div>
 	)

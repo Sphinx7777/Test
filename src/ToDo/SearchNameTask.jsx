@@ -17,7 +17,7 @@ return (
 		{searchMode && <input className={s.search} placeholder='По названию'
 												onChange={(event) => {setTitle(event.target.value)}}
 												onKeyPress={(event)=>{if(event.key === 'Enter'){
-													searchTask(title)}}}
+			searchTask(title)}}}
 
 		/>}
 

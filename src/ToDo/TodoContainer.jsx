@@ -6,7 +6,7 @@ import {
 	changeStatusTaskEditForm,
 	changeTask,
 	changeTaskStatus,
-	removeTask,setToggleEditTask
+	removeTask, setToggleEditTask, toggleEditStatus
 } from "../Redux/todoReducer";
 import {Todo} from "./Todo";
 
@@ -37,6 +37,6 @@ let mapStateToProps = (state)=>({
 
 export default connect(mapStateToProps,
 	{addNewTask,removeTask,changeTask,changeTaskStatus,
-		changeStatusAllTasks,changeStatusTaskEditForm,setToggleEditTask})(TodoContainer);
+		changeStatusAllTasks,changeStatusTaskEditForm,setToggleEditTask,toggleEditStatus})(TodoContainer);
 
 

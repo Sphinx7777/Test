@@ -10,7 +10,7 @@ import {Footer} from "./Footer";
 export const Todo = ({
 											 tasks, addNewTask, removeTask, changeTask, changeTaskStatus,
 											 editMode, changeStatusTaskEditForm, allMark, changeStatusAllTasks,
-											 setToggleEditTask, editDescriptionStatus
+											 setToggleEditTask, editDescriptionStatus,toggleEditStatus
 										 }) => {
 
 	let newDate = new Date();
@@ -24,7 +24,7 @@ export const Todo = ({
 	let createDate = (newDate.toLocaleString("ru", options));
 
 	let onSubmit = (e) => {
-		addNewTask({id: Math.random(), name: e.name, description: e.description, status: false, createDate})
+		addNewTask({id: Math.random(), editStatus:false, name: e.name, description: e.description, status: false, createDate})
 	};
 	let [newTasks, setNewTasks] = useState(tasks);
 	let activeTask = tasks.filter(t => !t.status);
@@ -35,8 +35,8 @@ export const Todo = ({
 
 	};
 	let editTask = (id) => {
-		setNewTasks(() => tasks.filter(t => t.id === id));
-		setToggleEditTask(true)
+		/*setNewTasks(() => tasks.filter(t => t.id === id));*/
+		toggleEditStatus(id,true)
 	};
 
 	useEffect(() => {
@@ -60,7 +60,7 @@ export const Todo = ({
 					</div>
 				</div>
 				<div><h2>Список дел которые надо успеть ...</h2></div>
-				<ButtonHeaderToDo {...{tasks, removeTask, changeStatusTaskEditForm, editMode}}/>
+				<ButtonHeaderToDo {...{tasks, removeTask, changeStatusTaskEditForm,editDescriptionStatus, editMode}}/>
 				{editMode && <div className={s.formForTask}>
 					<FormForTask onSubmit={onSubmit} changeStatusTaskEditForm={changeStatusTaskEditForm}/>
 				</div>}
@@ -70,7 +70,9 @@ export const Todo = ({
 				</div>
 				<div className={s.todoList}>
 					<div className={s.listWrapper}>
-						<Task {...{newTasks, changeTask, editTask, changeTaskStatus, setToggleEditTask, editDescriptionStatus}}/>
+						<Task {...{newTasks,changeTask,editTask,editMode,changeTaskStatus,setToggleEditTask,
+							editDescriptionStatus,toggleEditStatus}}
+						/>
 					</div>
 					<Footer/>
 				</div>

@@ -6,7 +6,8 @@ const CHANGE_TASK = '/todoReducer___CHANGE_TASK';
 const CHANGE_TASK_STATUS = '/todoReducer___CHANGE_TASK_STATUS';
 const EDIT_MODE_STATUS = '/todoReducer___EDIT_MODE_STATUS';
 const MARK_ALL_TASKS = '/todoReducer___MARK_ALL_TASKS';
-const CLOSE_EDIT_TASK = '/todoReducer___CLOSE_EDIT_TASK';
+const TOGGLE_EDIT_TASK = '/todoReducer___CLOSE_EDIT_TASK';
+const EDIT_STATUS_TASK = '/todoReducer___EDIT_STATUS_TASK';
 
 
 let data = load({namespace:'Tasks-list'});
@@ -14,7 +15,7 @@ let initialState = data.toDo;
 
 if(!initialState || !initialState.tasks || !initialState.tasks.length){
 	initialState = {
-		tasks:[{id: 1, name: 'Образец', description: 'Описание задачи', status: false,createDate:"01 января 2000 г. 00:00"}],
+		tasks:[{id: 1, name: 'Образец',editStatus:false, description: 'Описание задачи', status: false,createDate:"01 января 2000 г. 00:00"}],
 		filterTasksStatus: null,
 		editMode: false,
 		allMark: false,
@@ -35,7 +36,7 @@ const todoReducer = (state = initialState, action) => {
 			return {...state,tasks:state.tasks.filter(t=>t.status!==true),allMark: false
 			}
 		}
-		case CLOSE_EDIT_TASK: {
+		case TOGGLE_EDIT_TASK: {
 			return {...state,editDescriptionStatus: action.status}
 		}
 		case CHANGE_TASK: {
@@ -61,6 +62,17 @@ const todoReducer = (state = initialState, action) => {
 				})
 			}
 		}
+		case EDIT_STATUS_TASK: {
+			return {
+				...state, tasks: state.tasks.map(t => {
+					if (t.id === action.id) {
+						t.editStatus = action.status;
+						return t;
+					}
+					return t;
+				})
+			}
+		}
 		case MARK_ALL_TASKS: {
 			return {
 				...state, ...state.tasks.map(t => t.status = action.status)
@@ -79,9 +91,17 @@ const setChangeTask = (taskDesc) => ({type: CHANGE_TASK, ...taskDesc});
 const setChangeTaskStatus = (taskStatus) => ({type: CHANGE_TASK_STATUS, ...taskStatus});
 const setEditModeStatus = (status) => ({type: EDIT_MODE_STATUS, status});
 const setStatusMarkAllTasks = (status) => ({type: MARK_ALL_TASKS, status});
-export const setToggleEditTask = (status) => ({type: CLOSE_EDIT_TASK,status});
+export const setToggleEditTask = (status) => ({type: TOGGLE_EDIT_TASK,status});
+const setEditStatusTask = (status) => ({type: EDIT_STATUS_TASK,...status});
 
 
+
+export const toggleEditStatus = (id,status) => {
+	return (dispatch) => {
+		dispatch(setEditStatusTask({id,status}));
+		dispatch(setToggleEditTask(status));
+	}
+};
 
 export const addNewTask = (task) => {
 	return (dispatch) => {
@@ -104,10 +124,12 @@ export const removeTask = (id) => {
 		dispatch(setRemoveTask(id));
 	}
 };
-export const changeTask = (id, description,name) => {
+export const changeTask = (id, description,name,status) => {
 	return (dispatch) => {
 		dispatch(setChangeTask({id, description,name}));
+		dispatch(setEditStatusTask({id,status}));
 		dispatch(setToggleEditTask(false));
+
 	}
 };
 export const changeTaskStatus = (id, status) => {

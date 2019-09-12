@@ -22,6 +22,10 @@ const App=()=> {
 					window.location.href = 'https://github.com/Sphinx7777?tab=repositories';
 					return null;
 				}}/>
+				<Route path='/mailLink' component={() => {
+					window.location.href = 'mailto:Spamoglot13@gmail.com';
+					return null;
+				}}/>
 			</Switch>
 		</div>
 	);

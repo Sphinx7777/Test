@@ -18,7 +18,9 @@ export const Footer = (props) => {
 							© «Онищенко С.М.», 2019
 						</div>
 						<div>
-							{/*<a href="mailto:Spamoglot13@gmail.com ">Пишите однако...</a>*/}
+							<NavLink className={s.link} target='_blank' to="/mailLink">
+								Пишите письма
+							</NavLink>
 						</div>
 					</div>
 					<div className={s.linkLineWrapper}>

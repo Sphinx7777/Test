@@ -9,7 +9,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 
 .todoWrapper {
-	max-width: 60rem;
+
 	margin: 0 auto;
 	@include bRad (0.5rem);
 
@@ -70,7 +70,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 	}
 
 	.todo {
-		margin-top: 3rem;
+		margin-top: 0.5rem;
 		@include bRad (1rem);
 		background-color: rgba(0, 0, 0, .1);
 		box-shadow: $shad;
@@ -235,6 +235,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 							@include bRad (0.5rem);
 							padding: 3px;
 							border: 1px solid black;
+							font-size: 1.1rem;
 						}
 						.editName.error {
 							border: 1px solid red;
@@ -279,6 +280,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 								height: 7rem;
 								@include bRad (0.5rem);
 								box-shadow: $shad;
+								font-size: 1.4rem;
 								resize: none;
 								border: 1px solid black;
 								max-width: 30rem;
@@ -445,8 +447,41 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				}
 			}
 		}
+		@media screen and (max-width: 750px) {
+			.filterWrapper {
+				display: inline-flex;
+				flex-direction: column;
 
-		@media screen and (max-width: 580px) {
+
+				.filter, .allCount {
+
+				}
+
+				.filter {
+					display: inline-flex;
+					flex-direction: column;
+
+
+				}
+
+					.filterItem {
+           width: 100%;
+						margin-bottom: 0.5rem;
+
+						&:last-child {
+
+						}
+					}
+				}
+
+				.allCount {
+margin: 0 0 0.5rem 0;
+
+				}
+			}
+
+
+			@media screen and (max-width: 580px) {
 			.filterWrapper {
 				flex-direction: column;
 
@@ -467,6 +502,8 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 				.allCount {
 					margin-bottom: 0.5rem;
+					width: 100%;
+					margin-left: 0;
 				}
 			}
 
@@ -510,14 +547,14 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 			}
 
 			.filterWrapper {
-				flex-direction: column;
+
 
 				.filter {
-					justify-content: center;
+
 				}
 
 				.allCount {
-					margin: 0.3rem auto;
+
 				}
 			}
 

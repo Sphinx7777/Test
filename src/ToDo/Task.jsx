@@ -1,27 +1,27 @@
-import React, {useState,useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import s from './ToDo.module.scss'
 import settings from './../image/Settings.ico'
 import add from './../image/add.ico'
 
 
 export const Task = ({
-											 newTasks,changeTask,changeTaskStatus,editTask,editMode,
-											 toggleEditStatus,defaultName,defaultValue
+											 newTasks, changeTask, changeTaskStatus, editTask, editMode,
+											 toggleEditStatus, defaultName, defaultValue
 										 }) => {
 	let [editValue, setEditValue] = useState(defaultValue);
 	let [name, setName] = useState(defaultName);
-	let [error,setError] = useState(false);
+	let [error, setError] = useState(false);
 
-	useEffect(()=>{
+	useEffect(() => {
 		setName(defaultName);
 		setEditValue(defaultValue);
-	},[defaultValue,defaultName]);
+	}, [defaultValue, defaultName]);
 
 	let setChangedText = (id) => {
-		if(name.length >= 1 && editValue.length >= 1 ){
+		if (name.length >= 1 && editValue.length >= 1) {
 			changeTask(id, editValue, name, false);
 			setError(false);
-		}else {
+		} else {
 			setError(true)
 		}
 	};
@@ -36,15 +36,24 @@ export const Task = ({
 							{!t.editStatus
 								? <div><span>Название : </span><span className={s.name}>{t.name}</span></div>
 								: <div>
-									<span className={!error ? s.fieldEditMode : s.fieldEditMode + ' ' + s.error}>Min 1 && Max 25 symbols : </span>
+									<span
+										className={!error ? s.fieldEditMode : s.fieldEditMode + ' ' + s.error}>Min 1 && Max 25 symbols : </span>
 									<input className={!error ? s.editName : s.editName + ' ' + s.error}
 												 defaultValue={t.name}
 												 maxLength='25'
 												 minLength='1'
+												 autoFocus={true}
 												 placeholder='Min 1 && Max 25 symbols'
 												 onChange={(event) => {
 													 setName(event.currentTarget.value)
-												 }}/>
+												 }}
+												 onKeyUp={(event) => {
+													 if (event.key === 'Enter') {
+														 setChangedText(t.id)
+													 } else if (event.key === 'Escape') {
+														 setError(false);
+														 toggleEditStatus(t.id, false);
+													 }}}/>
 								</div>
 							}
 							<div><span>Дата создания : </span><span className={s.date}>{t.createDate}</span></div>
@@ -65,22 +74,32 @@ export const Task = ({
 									className={!t.status
 										? s.taskDescription
 										: s.taskDescription + ' ' + s.taskDescriptionOff}>
-											{t.description ? t.description : 'Странно...что то да должно было быть...забыли написать наверное'}
-										</div>
+									{t.description ? t.description : 'Странно...что то да должно было быть...забыли написать наверное'}
+								</div>
 								: <div className={s.areaWrapper}>
-									<div className={!error ? s.areaEditMode : s.areaEditMode + ' ' + s.error}>Min 1 && Max 200 symbols</div>
-									<textarea className={!error ? s.area : s.area + ' ' + s.error} cols='30' rows='3' maxLength='200' minLength='1'
-														placeholder='Min 1 && Max 200 symbols'
+									<div className={!error ? s.areaEditMode : s.areaEditMode + ' ' + s.error}>Min 1 && Max 300 symbols
+									</div>
+									<textarea className={!error ? s.area : s.area + ' ' + s.error} cols='30' rows='3' maxLength='300'
+														minLength='1'
+														placeholder='Min 1 && Max 300 symbols'
 														defaultValue={t.description}
 														onChange={(e) => {
-										setEditValue(e.currentTarget.value)
-									}}/>
+															setEditValue(e.currentTarget.value)
+														}}
+														onKeyUp={(event) => {
+															if (event.key === 'Enter') {
+																setChangedText(t.id)
+															} else if (event.key === 'Escape') {
+																setError(false);
+																toggleEditStatus(t.id, false)
+															}
+														}}/>
 								</div>
 							}
 							{!t.editStatus
 								? <button className={s.taskEdit} title='Редактировать'
 													onClick={() =>
-														editTask(t.id,t.name,t.description)} disabled={editMode}>
+														editTask(t.id, t.name, t.description)} disabled={editMode}>
 									<img className={s.settingsIcon} src={settings} alt="Редактировать"/>
 								</button>
 								: <div className={s.edit}>
@@ -90,7 +109,9 @@ export const Task = ({
 													setChangedText(t.id)}>
 												<img className={s.settingsIcon} src={add} alt="Сохранить"/>
 									</span>
-									<span className={s.closeEdit} onClickCapture={()=>{setError(false)}} onClick={() => toggleEditStatus(t.id, false)} title='Закрыть'>X</span>
+									<span className={s.closeEdit} onClickCapture={() => {
+										setError(false)
+									}} onClick={() => toggleEditStatus(t.id, false)} title='Закрыть'>X</span>
 								</div>}
 						</div>
 					</div>

@@ -12,17 +12,18 @@ export const Footer = () => {
 	return (
 		<div className={s.footerWrapper}>
 			<footer className={s.footer}>
-				<div className={s.LinkWrapper}>
+				<div className={s.mail}>
 					<div>
-						<div>
-							© «Онищенко С.М.», 2019
-						</div>
-						<div>
-							<NavLink className={s.link} target='_blank' to="/mailLink">
-								Пишите письма
-							</NavLink>
-						</div>
+						© «Онищенко С.М.», 2019
 					</div>
+					<div>
+						<NavLink className={s.link} target='_blank' to="/mailLink">
+							Пишите письма
+						</NavLink>
+					</div>
+				</div>
+
+				<div className={s.LinkWrapper}>
 					<div className={s.linkLineWrapper}>
 						<NavLink className={s.link} target='_blank' to="/djinni">
 							<img className={s.linkImg} src={lamp} alt="Джинни"/><span className={s.linkTitle}>Djinni</span>
@@ -34,10 +35,10 @@ export const Footer = () => {
 							<img className={s.linkImg} src={git} alt="Гитхаб"/><span className={s.linkTitle}>Git</span>
 						</NavLink>
 					</div>
-
 				</div>
+
 				<div className={s.photoWrapper}>
-					<span>Будете копипастить пожалуюсь братану</span>
+					<span >Будете копипастить пожалуюсь братану</span>
 					<img className={s.photo} src={brother} alt="Brother"/>
 				</div>
 			</footer>

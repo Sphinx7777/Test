@@ -53,6 +53,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 					resize: none;
 				}
 			}
+
 			.closeForm {
 				text-align: right;
 				padding-right: 1rem;
@@ -79,11 +80,18 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 		.markAndSearchWrapper {
 			display: flex;
 			justify-content: space-between;
+			align-items: center;
 
 			.allMark {
 				display: flex;
-				align-content: center;
+				align-items: center;
+				justify-content: flex-start;
+				text-align: left;
 				padding-left: 6%;
+
+				span {
+					min-width: 100%;
+				}
 
 				.allMarkCheck {
 					zoom: 1.5;
@@ -93,7 +101,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 			}
 
 			.searchWrapper {
-				display: flex;
+
 				padding-right: 6%;
 				align-items: center;
 
@@ -106,9 +114,16 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 					@include bRad (100%);
 				}
 
-				.search {
-					@include bRad (0.5rem);
+				.searchWrapperContent {
+					display: flex;
+
+					.search {
+						padding: 3px;
+						@include bRad (0.5rem);
+					}
+
 				}
+
 
 				.searchIcon {
 					max-width: 1.5rem;
@@ -116,6 +131,39 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 					cursor: pointer;
 					padding-left: 0.5rem;
 
+				}
+			}
+		}
+
+		@media screen and (max-width: 650px) {
+			.markAndSearchWrapper {
+				display: block;
+
+				.searchWrapper {
+					display: block;
+					text-align: right;
+
+					.searchWrapperContent {
+						justify-content: flex-end;
+					}
+				}
+			}
+		}
+		@media screen and (max-width: 450px) {
+			.markAndSearchWrapper {
+
+
+				.searchWrapper {
+
+
+					.searchWrapperContent {
+						flex-direction: column;
+						align-items: flex-end;
+
+						.closeSearch {
+							display: block;
+						}
+					}
 				}
 			}
 		}
@@ -146,7 +194,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				}
 			}
 
-			.todoBtnDell:disabled,.todoBtnAdd:disabled {
+			.todoBtnDell:disabled, .todoBtnAdd:disabled {
 				border: 1px solid grey;
 				background: rgba(0, 0, 0, 0.1);
 				color: white;
@@ -178,6 +226,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 						.fieldEditMode {
 							font-size: 0.8rem;
 						}
+
 						.fieldEditMode.error {
 							color: red;
 						}
@@ -220,57 +269,67 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 							.areaEditMode {
 								font-size: 0.8rem;
+								padding: 5px;
 							}
+
 							.areaEditMode.error {
 								color: red;
 							}
 
 							.area {
-								max-height: 10rem;
+								height: 7rem;
 								@include bRad (0.5rem);
 								box-shadow: $shad;
 								resize: none;
 								border: 1px solid black;
-
-
+								max-width: 30rem;
+								width: 33rem;
+								@media screen and (max-width: 900px) {
+									max-width: 29rem;
+									max-height: 7rem;
+								}
+								@media screen and (max-width: 800px) {
+									max-width: 27rem;
+									max-height: 7rem;
+								}
+								@media screen and (max-width: 750px) {
+									max-width: 24rem;
+									max-height: 7rem;
+								}
+								@media screen and (max-width: 650px) {
+									max-width: 20rem;
+									max-height: 7rem;
+								}
 								@media screen and (max-width: 600px) {
 									max-width: 18rem;
 									max-height: 7rem;
 								}
-								@media screen and (max-width: 560px) {
+								@media screen and (max-width: 550px) {
 									max-width: 15rem;
 									max-height: 7rem;
 								}
-								@media screen and (max-width: 540px) {
-									max-width: 13rem;
-									max-height: 7rem;
-								}
-								@media screen and (max-width: 520px) {
-									max-width: 11rem;
-									max-height: 3rem;
-								}
 								@media screen and (max-width: 500px) {
-									max-width: 9rem;
-									max-height: 2rem;
-								}
-								@media screen and (max-width: 450px) {
-									max-width: 7rem;
-									max-height: 2rem;
-								}
-								@media screen and (max-width: 320px) {
-									max-width: 5rem;
-									max-height: 2rem;
+									max-width: 14rem;
+									max-height: 5rem;
 								}
 							}
 							.area.error {
 								border: 1px solid red;
 							}
-
 						}
 
 
 						.inputWrapper {
 							@include bRad (0.5rem);
+							display: flex;
+							flex-direction: column;
+							text-align: center;
+
+							.taskCompleted {
+								color: green;
+								font-weight: bold;
+								letter-spacing: 2px;
+							}
 
 							&:hover {
 								background: rgba(0, 0, 0, .1);
@@ -278,23 +337,23 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 
 							.taskStatus {
-								display: inline-block;
+								margin: 0 auto;
 								zoom: 2;
 								cursor: pointer;
 							}
 						}
 
-						.inputWrapper.changed {
-							background-color: lawngreen;
-						}
-
-
 						.taskDescription {
-							display: block;
-							max-width: 100%;
+							width: 100%;
 							word-break: break-all;
 							font-style: italic;
 							font-size: 1.2rem;
+							font-weight: 500;
+							margin: 0.5rem 0.3rem;
+							padding: 7px 0;
+							@include bRad (0.5rem);
+							box-shadow: $shad;
+							background-color: white;
 
 						}
 
@@ -321,6 +380,8 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 						.edit {
 							display: flex;
 							align-items: center;
+							justify-content: space-around;
+
 						}
 
 						.taskEdit {
@@ -334,13 +395,21 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 								max-width: 1.5rem;
 							}
 						}
+
 						.taskEdit:hover {
 							box-shadow: $shad;
 						}
+
 						.taskEdit:disabled {
 							box-shadow: none;
 							border: 1px solid white;
 							background: rgba(0, 0, 0, 0.1);
+						}
+					}
+
+					@media screen and (max-width: 500px) {
+						.task {
+							flex-direction: column-reverse;
 						}
 					}
 				}
@@ -362,40 +431,69 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 					.LinkWrapper {
 						display: flex;
 						align-items: center;
+						justify-content: space-around;
+						width: 100%;
 
-						.link {
-							text-decoration: none;
 
-							.linkImg {
+						.linkLineWrapper {
+							display: flex;
+
+							.link {
+								text-decoration: none;
 								display: flex;
 								flex-direction: column;
-								align-content: center;
-								margin: 0 0.5rem;
-								max-width: 2.5rem;
-								border: 1px solid blue;
-								@include bRad (100%);
+								align-items: center;
 
+								.linkImg {
+									display: flex;
+									flex-direction: column;
+									align-content: center;
 
-								.linkTitle {
+									margin: 0 0.2rem;
+									max-width: 2.5rem;
+									border: 1px solid blue;
+									@include bRad (100%);
 
 								}
+
+								@media screen and (max-width: 320px) {
+									max-width: 2.5rem;
+								}
+
+
+							}
 						}
 
 
-						}
 					}
 
-					.photoWrapper {
-						display: flex;
-						align-items: center;
 
-						.photo {
-							margin: 0 0.5rem;
-							max-width: 3.0rem;
-							border: 1px solid blue;
-							@include bRad (100%);
-						}
+				}
+
+				@media screen and (max-width: 500px) {
+					.LinkWrapper {
+						flex-direction: column;
 					}
+
+
+				}
+			}
+
+			.photoWrapper {
+				display: flex;
+				align-items: center;
+
+				.photo {
+					margin: 0 0.5rem;
+					max-width: 3.0rem;
+					border: 1px solid blue;
+					@include bRad (100%);
+				}
+			}
+
+			@media screen and (max-width: 620px) {
+				.photoWrapper {
+					display: none;
 				}
 			}
 		}

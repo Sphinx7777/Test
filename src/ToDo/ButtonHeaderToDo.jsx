@@ -30,7 +30,10 @@ export const MarkAllTasks = ({allMark, changeStatusAllTasks}) => {
 			<input className={s.allMarkCheck}
 						 onChange={(event) => {
 							 changeStatusAllTasks(event.target.checked)
-						 }} checked={allMark} type="checkbox"/>Отметить все
+						 }}
+						 checked={allMark}
+						 type="checkbox"/>
+						 <span className={s.allMarkCheckDesc}>Отметить все</span>
 		</div>
 	)
 };

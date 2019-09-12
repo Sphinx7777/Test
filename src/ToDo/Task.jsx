@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import s from './ToDo.module.scss'
 import settings from './../image/Settings.ico'
 import add from './../image/add.ico'
@@ -10,9 +10,20 @@ export const Task = ({
 										 }) => {
 	let [editValue, setEditValue] = useState(defaultValue);
 	let [name, setName] = useState(defaultName);
+	let [error,setError] = useState(false);
+
+	useEffect(()=>{
+		setName(defaultName);
+		setEditValue(defaultValue);
+	},[defaultValue,defaultName]);
 
 	let setChangedText = (id) => {
+		if(name.length >= 1 && editValue.length >= 1 ){
 			changeTask(id, editValue, name, false);
+			setError(false);
+		}else {
+			setError(true)
+		}
 	};
 
 
@@ -25,8 +36,8 @@ export const Task = ({
 							{!t.editStatus
 								? <div><span>Название : </span><span className={s.name}>{t.name}</span></div>
 								: <div>
-									<span className={s.fieldEditMode}>Min 1 && Max 25 symbols : </span>
-									<input className={s.editName}
+									<span className={!error ? s.fieldEditMode : s.fieldEditMode + ' ' + s.error}>Min 1 && Max 25 symbols : </span>
+									<input className={!error ? s.editName : s.editName + ' ' + s.error}
 												 defaultValue={t.name}
 												 maxLength='25'
 												 minLength='1'
@@ -46,17 +57,19 @@ export const Task = ({
 											 onChange={(event) => {
 												 changeTaskStatus(t.id, event.target.checked)
 											 }}/>
+								{!t.status ? <span>Завершить</span> : <span className={s.taskCompleted}>Ок!</span>}
+
 							</div>
 							{!t.editStatus
-								? <span
+								? <div
 									className={!t.status
 										? s.taskDescription
 										: s.taskDescription + ' ' + s.taskDescriptionOff}>
 											{t.description ? t.description : 'Странно...что то да должно было быть...забыли написать наверное'}
-										</span>
+										</div>
 								: <div className={s.areaWrapper}>
-									<div className={s.areaEditMode}>Min 1 && Max 200 symbols</div>
-									<textarea className={s.area} cols='30' rows='3' maxLength='200' minLength='1'
+									<div className={!error ? s.areaEditMode : s.areaEditMode + ' ' + s.error}>Min 1 && Max 200 symbols</div>
+									<textarea className={!error ? s.area : s.area + ' ' + s.error} cols='30' rows='3' maxLength='200' minLength='1'
 														placeholder='Min 1 && Max 200 symbols'
 														defaultValue={t.description}
 														onChange={(e) => {
@@ -77,7 +90,7 @@ export const Task = ({
 													setChangedText(t.id)}>
 												<img className={s.settingsIcon} src={add} alt="Сохранить"/>
 									</span>
-									<span className={s.closeEdit} onClick={() => toggleEditStatus(t.id, false)} title='Закрыть'>X</span>
+									<span className={s.closeEdit} onClickCapture={()=>{setError(false)}} onClick={() => toggleEditStatus(t.id, false)} title='Закрыть'>X</span>
 								</div>}
 						</div>
 					</div>

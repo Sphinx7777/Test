@@ -30,9 +30,11 @@ export const Todo = ({
 	let activeTask = tasks.filter(t => !t.status);
 	let completedTask = tasks.filter(t => t.status);
 
-	let searchTask = (name) => {
-		setNewTasks(() => tasks.filter(t => t.name === name));
-
+	let searchTaskByName = (name) => {
+		setNewTasks(() => tasks.filter(t => t.name.match(name)));
+	};
+	let searchTaskByDescription = (description) => {
+		setNewTasks(() => tasks.filter(t => t.description.match(description)));
 	};
 	let editTask = (id,name,value) => {
 		toggleEditStatus(id,true,name,value)
@@ -65,7 +67,7 @@ export const Todo = ({
 				</div>}
 				<div className={s.markAndSearchWrapper}>
 					<MarkAllTasks {...{allMark, changeStatusAllTasks}}/>
-					<SearchNameTask {...{searchTask}}/>
+					<SearchNameTask {...{searchTaskByName,searchTaskByDescription}}/>
 				</div>
 				<div className={s.todoList}>
 					<div className={s.listWrapper}>

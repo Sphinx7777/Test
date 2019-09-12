@@ -4,7 +4,7 @@ import FormForTask from "./FormForTask";
 import {ButtonHeaderToDo, MarkAllTasks} from "./ButtonHeaderToDo";
 import {Task} from "./Task";
 import {SearchNameTask} from "./SearchNameTask";
-import {Footer} from "./Footer";
+
 
 
 export const Todo = ({
@@ -75,7 +75,6 @@ export const Todo = ({
 							toggleEditStatus,defaultName,defaultValue}}
 						/>
 					</div>
-					<Footer/>
 				</div>
 			</div>
 		</div>

@@ -2,6 +2,7 @@ import React from 'react';
 import s from './App.module.scss';
 import TodoContainer from "./ToDo/TodoContainer";
 import {Route, Switch} from "react-router-dom";
+import {Footer} from "./ToDo/Footer";
 
 
 
@@ -9,6 +10,7 @@ const App=()=> {
 	return (
 		<div className={s.appWrapper}>
 			<TodoContainer />
+			<Footer />
 			<Switch>
 				<Route path='/telegram' component={() => {
 					window.location.href = 'https://t.me/S_f_i_n_x';

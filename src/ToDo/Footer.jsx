@@ -1,5 +1,5 @@
 import React from 'react'
-import s from './ToDo.module.scss'
+import s from './Footer.module.scss'
 import {NavLink} from "react-router-dom";
 import telegram from "../image/telegram.ico";
 import lamp from "../image/lamp.ico";
@@ -7,7 +7,7 @@ import brother from "../image/Sfinx.jpg";
 import git from "../image/git.ico";
 
 
-export const Footer = (props) => {
+export const Footer = () => {
 
 	return (
 		<div className={s.footerWrapper}>

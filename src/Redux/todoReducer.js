@@ -8,6 +8,7 @@ const EDIT_MODE_STATUS = '/todoReducer___EDIT_MODE_STATUS';
 const MARK_ALL_TASKS = '/todoReducer___MARK_ALL_TASKS';
 const TOGGLE_EDIT_TASK = '/todoReducer___CLOSE_EDIT_TASK';
 const EDIT_STATUS_TASK = '/todoReducer___EDIT_STATUS_TASK';
+const DEFAULT_DATA_TASK = '/todoReducer___DEFAULT_DATA_TASK';
 
 
 let data = load({namespace:'Tasks-list'});
@@ -19,7 +20,10 @@ if(!initialState || !initialState.tasks || !initialState.tasks.length){
 		filterTasksStatus: null,
 		editMode: false,
 		allMark: false,
-		editDescriptionStatus: false
+		editDescriptionStatus: false,
+		defaultName: null,
+		defaultValue: null,
+
 	}
 }
 
@@ -31,6 +35,9 @@ const todoReducer = (state = initialState, action) => {
 		}
 		case EDIT_MODE_STATUS: {
 			return {...state, editMode: action.status}
+		}
+		case DEFAULT_DATA_TASK: {
+			return {...state, defaultName: action.name,defaultValue: action.value}
 		}
 		case REMOVE_CHANGED_TASK: {
 			return {...state,tasks:state.tasks.filter(t=>t.status!==true),allMark: false
@@ -91,13 +98,15 @@ const setChangeTask = (taskDesc) => ({type: CHANGE_TASK, ...taskDesc});
 const setChangeTaskStatus = (taskStatus) => ({type: CHANGE_TASK_STATUS, ...taskStatus});
 const setEditModeStatus = (status) => ({type: EDIT_MODE_STATUS, status});
 const setStatusMarkAllTasks = (status) => ({type: MARK_ALL_TASKS, status});
-export const setToggleEditTask = (status) => ({type: TOGGLE_EDIT_TASK,status});
+const setToggleEditTask = (status) => ({type: TOGGLE_EDIT_TASK,status});
 const setEditStatusTask = (status) => ({type: EDIT_STATUS_TASK,...status});
+const setdefaultDataTask = (data) => ({type: DEFAULT_DATA_TASK,...data});
 
 
 
-export const toggleEditStatus = (id,status) => {
+export const toggleEditStatus = (id,status,name,value) => {
 	return (dispatch) => {
+		dispatch(setdefaultDataTask({name,value}));
 		dispatch(setEditStatusTask({id,status}));
 		dispatch(setToggleEditTask(status));
 	}

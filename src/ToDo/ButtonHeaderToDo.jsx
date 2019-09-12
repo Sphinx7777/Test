@@ -16,7 +16,7 @@ let disableBtnAdd = tasks.length>=50;
 			<button className={s.todoBtnDell} disabled={statusBtn} onClick={() => {
 				removeTask()
 			}}>
-				Удалить выделенные
+				Удалить завершенные
 			</button>
 		</div>
 	)

@@ -10,7 +10,7 @@ import {Footer} from "./Footer";
 export const Todo = ({
 											 tasks, addNewTask, removeTask, changeTask, changeTaskStatus,
 											 editMode, changeStatusTaskEditForm, allMark, changeStatusAllTasks,
-											 setToggleEditTask, editDescriptionStatus,toggleEditStatus
+											 editDescriptionStatus,toggleEditStatus,defaultName,defaultValue
 										 }) => {
 
 	let newDate = new Date();
@@ -34,9 +34,8 @@ export const Todo = ({
 		setNewTasks(() => tasks.filter(t => t.name === name));
 
 	};
-	let editTask = (id) => {
-		/*setNewTasks(() => tasks.filter(t => t.id === id));*/
-		toggleEditStatus(id,true)
+	let editTask = (id,name,value) => {
+		toggleEditStatus(id,true,name,value)
 	};
 
 	useEffect(() => {
@@ -59,7 +58,7 @@ export const Todo = ({
 						</div>
 					</div>
 				</div>
-				<div><h2>Список дел которые надо успеть ...</h2></div>
+				<div><h2>Это надо запомнить, а лучше сделать ...</h2></div>
 				<ButtonHeaderToDo {...{tasks, removeTask, changeStatusTaskEditForm,editDescriptionStatus, editMode}}/>
 				{editMode && <div className={s.formForTask}>
 					<FormForTask onSubmit={onSubmit} changeStatusTaskEditForm={changeStatusTaskEditForm}/>
@@ -70,8 +69,8 @@ export const Todo = ({
 				</div>
 				<div className={s.todoList}>
 					<div className={s.listWrapper}>
-						<Task {...{newTasks,changeTask,editTask,editMode,changeTaskStatus,setToggleEditTask,
-							editDescriptionStatus,toggleEditStatus}}
+						<Task {...{newTasks,changeTask,editTask,editMode,changeTaskStatus,
+							toggleEditStatus,defaultName,defaultValue}}
 						/>
 					</div>
 					<Footer/>

@@ -35,6 +35,7 @@ const FormForTask = (props) => {
 								 rows='3'
 								 placeholder='Min 1 && Max 200 symbols'
 								 typeComponent='textarea'
+								 autoFocus={false}
 								 name="description"
 								 type="text"
 								 component={TextField}

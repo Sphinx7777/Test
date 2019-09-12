@@ -5,16 +5,14 @@ import add from './../image/add.ico'
 
 
 export const Task = ({
-											 newTasks, changeTask, changeTaskStatus, setToggleEditTask, editTask,
-											 editDescriptionStatus,editMode,toggleEditStatus
+											 newTasks,changeTask,changeTaskStatus,editTask,editMode,
+											 toggleEditStatus,defaultName,defaultValue
 										 }) => {
-	let [editValue, setEditValue] = useState('');
-	let [name, setName] = useState('');
-
+	let [editValue, setEditValue] = useState(defaultValue);
+	let [name, setName] = useState(defaultName);
 
 	let setChangedText = (id) => {
-		editValue.length >= 1 && name.length >=1 &&
-		changeTask(id, editValue, name,false);
+			changeTask(id, editValue, name, false);
 	};
 
 
@@ -24,16 +22,15 @@ export const Task = ({
 				return (
 					<div key={t.id + i} className={s.taskWrapper}>
 						<div className={s.taskName}>
-
 							{!t.editStatus
 								? <div><span>Название : </span><span className={s.name}>{t.name}</span></div>
 								: <div>
 									<span className={s.fieldEditMode}>Min 1 && Max 25 symbols : </span>
-								<input className={s.editName}
+									<input className={s.editName}
 												 defaultValue={t.name}
-											 maxLength='25'
-											 minLength='1'
-											 placeholder='Min 1 && Max 25 symbols'
+												 maxLength='25'
+												 minLength='1'
+												 placeholder='Min 1 && Max 25 symbols'
 												 onChange={(event) => {
 													 setName(event.currentTarget.value)
 												 }}/>
@@ -58,20 +55,21 @@ export const Task = ({
 											{t.description ? t.description : 'Странно...что то да должно было быть...забыли написать наверное'}
 										</span>
 								: <div className={s.areaWrapper}>
-									<div className={s.areadEditMode}>Min 1 && Max 200 symbols</div>
-											<textarea className={s.area} cols='30' rows='3' maxLength='200' minLength='1'
-																placeholder='Min 1 && Max 200 symbols'
-																defaultValue={t.description} onChange={(e) => {
-												setEditValue(e.currentTarget.value)
-											}}/>
+									<div className={s.areaEditMode}>Min 1 && Max 200 symbols</div>
+									<textarea className={s.area} cols='30' rows='3' maxLength='200' minLength='1'
+														placeholder='Min 1 && Max 200 symbols'
+														defaultValue={t.description}
+														onChange={(e) => {
+										setEditValue(e.currentTarget.value)
+									}}/>
 								</div>
 							}
 							{!t.editStatus
 								? <button className={s.taskEdit} title='Редактировать'
-												onClick={() =>
-													editTask(t.id)} disabled={editMode}>
-												<img className={s.settingsIcon} src={settings} alt="Редактировать"/>
-									</button>
+													onClick={() =>
+														editTask(t.id,t.name,t.description)} disabled={editMode}>
+									<img className={s.settingsIcon} src={settings} alt="Редактировать"/>
+								</button>
 								: <div className={s.edit}>
 
 									<span className={s.taskEdit} title='Сохранить'
@@ -79,7 +77,7 @@ export const Task = ({
 													setChangedText(t.id)}>
 												<img className={s.settingsIcon} src={add} alt="Сохранить"/>
 									</span>
-									<span className={s.closeEdit} onClick={() => toggleEditStatus(t.id,false)} title='Закрыть'>X</span>
+									<span className={s.closeEdit} onClick={() => toggleEditStatus(t.id, false)} title='Закрыть'>X</span>
 								</div>}
 						</div>
 					</div>

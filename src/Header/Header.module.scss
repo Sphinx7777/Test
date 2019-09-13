@@ -15,11 +15,39 @@ margin: 0.5rem 0.5rem 0 9.5rem;
 
 	.header {
 		@include bRad (0.5rem);
-
 		box-shadow: $shad;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 3px;
 
-		.headLine {
+		.headTitle {
 			margin: 0;
+		}
+
+		.menu {
+
+			.toggleMenu {
+				padding: 0.5rem;
+				margin-left: 0.5rem;
+				box-shadow: $shad;
+				@include bRad (0.5rem);
+				cursor: pointer;
+				&:hover {
+					background-color: rgba(0,0,0,0.1);
+				}
+
+			}
+		}
+
+		.logo {
+
+			.logoImg {
+				margin: 0 0.5rem;
+				max-width: 3.0rem;
+				border: 1px solid blue;
+				@include bRad (100%);
+			}
 		}
 
 

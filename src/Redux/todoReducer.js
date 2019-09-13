@@ -9,6 +9,7 @@ const MARK_ALL_TASKS = '/todoReducer___MARK_ALL_TASKS';
 const TOGGLE_EDIT_TASK = '/todoReducer___CLOSE_EDIT_TASK';
 const EDIT_STATUS_TASK = '/todoReducer___EDIT_STATUS_TASK';
 const DEFAULT_DATA_TASK = '/todoReducer___DEFAULT_DATA_TASK';
+const TOGGLE_SHOW_SIDE_BAR = '/todoReducer___TOGGLE_SHOW_SIDE_BAR';
 
 
 let data = load({namespace:'Tasks-list'});
@@ -23,6 +24,7 @@ if(!initialState || !initialState.tasks || !initialState.tasks.length){
 		editDescriptionStatus: false,
 		defaultName: null,
 		defaultValue: null,
+		menuShow: true
 
 	}
 }
@@ -86,6 +88,9 @@ const todoReducer = (state = initialState, action) => {
 				, allMark: action.status
 			}
 		}
+		case TOGGLE_SHOW_SIDE_BAR: {
+			return {...state, menuShow: action.status}
+		}
 		default:
 			return state;
 	}
@@ -101,6 +106,7 @@ const setStatusMarkAllTasks = (status) => ({type: MARK_ALL_TASKS, status});
 const setToggleEditTask = (status) => ({type: TOGGLE_EDIT_TASK,status});
 const setEditStatusTask = (status) => ({type: EDIT_STATUS_TASK,...status});
 const setdefaultDataTask = (data) => ({type: DEFAULT_DATA_TASK,...data});
+export const setToggleShowSideBar = (status) => ({type: TOGGLE_SHOW_SIDE_BAR,status});
 
 
 

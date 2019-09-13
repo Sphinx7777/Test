@@ -5,6 +5,7 @@ import {Route, Switch} from "react-router-dom";
 import {Footer} from "./Footer/Footer";
 import {Header} from "./Header/Header";
 import {SideBar} from "./SideBar/SideBar";
+import {Resume} from "./Resume/Resume";
 
 
 
@@ -16,6 +17,7 @@ const App=()=> {
 			<div className={s.contentWrapper}>
 				<Switch>
 					<Route exact path='/'  render = {()=> <TodoContainer />}/>
+					<Route path='/resume'  render = {()=> <Resume />}/>
 					<Route path='/telegram' component={() => {
 						window.location.href = 'https://t.me/S_f_i_n_x';
 						return null;

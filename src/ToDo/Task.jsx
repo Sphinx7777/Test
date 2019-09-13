@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import s from './ToDo.module.scss'
-import settings from './../image/Settings.ico'
-import add from './../image/add.ico'
+import settings from '../images/Settings.ico'
+import add from '../images/add.ico'
+
 
 
 export const Task = ({

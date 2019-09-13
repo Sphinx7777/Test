@@ -10,8 +10,8 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 
 .sideBarWrapper {
-float: left;
-	max-width: 7rem;
+	float: left;
+	max-width: 7.5rem;
 	position: fixed;
 	left: 0.5rem;
 	top: 0.5rem;
@@ -23,7 +23,7 @@ float: left;
 		flex-direction: column;
 
 		.sideBarLink {
-			display: block;
+
 			text-align: center;
 			margin: 3rem 0.2rem 0 0.2rem;
 			padding: 0.5rem;
@@ -31,11 +31,13 @@ float: left;
 			@include bRad (0.3rem);
 			box-shadow: $shad;
 			text-decoration: none;
-			background: rgba(0,0,0,0.1);
 			color: black;
 			font-weight: bold;
 			&:first-child {
-
+margin-top: 4rem;
+			}
+			&:hover {
+				background: rgba(0,0,0,0.1);
 			}
 		}
 

@@ -1,10 +1,10 @@
 import React from 'react'
 import s from './Footer.module.scss'
 import {NavLink} from "react-router-dom";
-import telegram from "../image/telegram.ico";
-import lamp from "../image/lamp.ico";
-import brother from "../image/Sfinx.jpg";
-import git from "../image/git.ico";
+import telegram from "../images/telegram.ico";
+import lamp from "../images/lamp.ico";
+import brother from "../images/Sfinx.jpg";
+import git from "../images/git.ico";
 
 
 export const Footer = () => {
@@ -38,7 +38,6 @@ export const Footer = () => {
 				</div>
 
 				<div className={s.photoWrapper}>
-					<span >Будете копипастить пожалуюсь братану</span>
 					<img className={s.photo} src={brother} alt="Brother"/>
 				</div>
 			</footer>

@@ -5,7 +5,7 @@ import {TextField} from "../FormComponents/TextField";
 import {maxLength,required} from "../FormComponents/Validators";
 
 
-const maxLength200 = maxLength(200);
+const maxLength300 = maxLength(300);
 const maxLength25 = maxLength(25);
 
 
@@ -21,7 +21,7 @@ const FormForTask = (props) => {
 				<div className={s.fieldWrapper}>
 					<Field className={s.textField}
 								 typeComponent='input'
-								 autoFocus={false}
+								 autoFocus={true}
 								 placeholder='Min 1 && Max 25 symbols'
 								 name="name"
 								 type="text"
@@ -33,14 +33,14 @@ const FormForTask = (props) => {
 					<Field className={s.textField}
 								 cols= '30'
 								 rows='3'
-								 placeholder='Min 1 && Max 200 symbols'
+								 placeholder='Min 1 && Max 300 symbols'
 								 typeComponent='textarea'
 								 autoFocus={false}
 								 name="description"
 								 type="text"
 								 component={TextField}
 								 label="Описание"
-								 validate={[required,maxLength200]}
+								 validate={[required,maxLength300]}
 					/>
 				</div>
 

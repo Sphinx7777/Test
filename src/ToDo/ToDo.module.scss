@@ -71,7 +71,6 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 	.todo {
 		margin-top: 0.5rem;
-		@include bRad (1rem);
 		background-color: rgba(0, 0, 0, .1);
 		box-shadow: $shad;
 		@include bRad (0.5rem);
@@ -100,9 +99,18 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 			}
 
 			.searchWrapper {
-
 				padding-right: 6%;
 				align-items: center;
+
+				.search {
+					display: flex;
+					align-content: center;
+					box-shadow: $shad;
+					@include bRad (0.5rem);
+					padding: 2px;
+					cursor: pointer;
+
+				}
 
 				.closeSearch {
 					color: red;
@@ -116,7 +124,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				.searchWrapperContent {
 					display: flex;
 
-					.search {
+					.searchField {
 						padding: 3px;
 						@include bRad (0.5rem);
 					}
@@ -127,7 +135,6 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				.searchIcon {
 					max-width: 1.5rem;
 					outline: none;
-					cursor: pointer;
 					padding-left: 0.5rem;
 
 				}

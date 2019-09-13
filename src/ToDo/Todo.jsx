@@ -3,7 +3,7 @@ import s from './ToDo.module.scss'
 import FormForTask from "./FormForTask";
 import {ButtonHeaderToDo, MarkAllTasks} from "./ButtonHeaderToDo";
 import {Task} from "./Task";
-import {SearchNameTask} from "./SearchNameTask";
+import {SearchTask} from "./SearchTask";
 
 
 
@@ -67,7 +67,7 @@ export const Todo = ({
 				</div>}
 				<div className={s.markAndSearchWrapper}>
 					<MarkAllTasks {...{allMark, changeStatusAllTasks}}/>
-					<SearchNameTask {...{searchTaskByName,searchTaskByDescription}}/>
+					<SearchTask {...{searchTaskByName,searchTaskByDescription}}/>
 				</div>
 				<div className={s.todoList}>
 					<div className={s.listWrapper}>

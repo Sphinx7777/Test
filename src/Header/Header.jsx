@@ -1,19 +1,19 @@
-import React, {useState} from 'react'
+import React from 'react'
 import s from './Header.module.scss'
 import brother from "../images/Sfinx.jpg";
 
 
-export const Header = (props) => {
+export const Header = ({menuShowStatus,setToggleShowSideBar}) => {
 
-	let [menuShow, setMenuShow] = useState(false);
+
 
 	return (
-		<div className={s.headerWrapper}>
+		<div className={!menuShowStatus ? s.headerWrapper : s.headerWrapper+' '+s.headerDisableMenu}>
 			<header className={s.header}>
 				<div className={s.menu}>
-					{!menuShow
-						? <div className={s.toggleMenu} onClick={()=>{setMenuShow(true)}}>Показать меню</div>
-						: <div className={s.toggleMenu} onClick={()=>{setMenuShow(false)}}>Скрыть меню</div>
+					{!menuShowStatus
+						? <div className={s.toggleMenu} onClick={()=>{setToggleShowSideBar(true)}}>Скрыть меню</div>
+						: <div className={s.toggleMenu} onClick={()=>{setToggleShowSideBar(false)}}>Показать меню</div>
 					}
 				</div>
 				<div>

@@ -75,10 +75,15 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 		}
 	}
 }
+.footerWrapper.footerDisableMenu {
+	margin: 0 auto 0.5rem auto;
+}
 @media screen and (max-width: 650px) {
 	.footerWrapper {
 		margin: 0 auto 0.5rem auto;
 	}
+
+
 }
 
 

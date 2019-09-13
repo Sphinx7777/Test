@@ -7,10 +7,10 @@ import brother from "../images/Sfinx.jpg";
 import git from "../images/git.ico";
 
 
-export const Footer = () => {
+export const Footer = ({menuShowStatus}) => {
 
 	return (
-		<div className={s.footerWrapper}>
+		<div className={!menuShowStatus ? s.footerWrapper : s.footerWrapper+' '+s.footerDisableMenu}>
 			<footer className={s.footer}>
 				<div className={s.mail}>
 					<div>

@@ -10,7 +10,7 @@ import {SearchTask} from "./SearchTask";
 export const Todo = ({
 											 tasks, addNewTask, removeTask, changeTask, changeTaskStatus,
 											 editMode, changeStatusTaskEditForm, allMark, changeStatusAllTasks,
-											 editDescriptionStatus,toggleEditStatus,defaultName,defaultValue
+											 editDescriptionStatus,toggleEditStatus,defaultName,defaultValue,menuShowStatus
 										 }) => {
 
 	let newDate = new Date();

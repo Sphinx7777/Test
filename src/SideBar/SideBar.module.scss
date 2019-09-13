@@ -12,20 +12,31 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 .sideBarWrapper {
 	float: left;
 	max-width: 7.5rem;
-	position: fixed;
+	position: sticky;
 	left: 0.5rem;
 	top: 0.5rem;
-
+	margin-top: 4rem;
 
 	.sideBar {
 		box-shadow: $shad;
 		display: flex;
 		flex-direction: column;
 
-		.sideBarLink {
+		.sideBarToClose {
+			max-width: 0.5rem;
+			color: red;
+			padding: 2px 9px;
+			margin: 0.5rem;
+			cursor: pointer;
+			border: 1px solid red;
+			@include bRad (100%);
+		}
 
+
+		.sideBarLink {
+			max-width: 100%;
 			text-align: center;
-			margin: 3rem 0.2rem 0 0.2rem;
+			margin: 2rem 0.2rem 0 0.2rem;
 			padding: 0.5rem;
 			border: 1px solid silver;
 			@include bRad (0.3rem);
@@ -33,47 +44,50 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 			text-decoration: none;
 			color: black;
 			font-weight: bold;
+
 			&:first-child {
-margin-top: 4rem;
+				margin-top: 4rem;
 			}
+
 			&:hover {
-				background: rgba(0,0,0,0.1);
+				background: rgba(0, 0, 0, 0.1);
 			}
 		}
-
 	}
+}
+
+.sideBarWrapper.disableShow {
+	display: none;
+
 }
 
 @media screen and (max-width: 650px) {
 	.sideBarWrapper {
 		left: 0;
-		top: 0;
-		display: block;
+		top: 4rem;
 		max-width: 100%;
-		float: none;
-		position: relative;
-
-
+		position: fixed;
 
 
 		.sideBar {
-			display: block;
-			text-align: center;
-
+			display: inline-flex;
+			flex-direction: column;
+			background-color: rgba(0, 0, 0, 0.6);
+			@include bRad (0.3rem);
 
 			.sideBarLink {
-				display: inline-block;
+				color: white;
+				max-width: 100%;
+				display: block;
+				padding: 0.5rem;
+				margin-bottom: 1rem;
 
-				padding: 0.2rem;
-				margin: 0.5rem;
 				&:first-child {
-					margin-left: 0;
+					margin: 0.2rem;
 				}
-
 			}
 		}
 	}
-
 }
 
 

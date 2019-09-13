@@ -100,11 +100,12 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 			.searchWrapper {
 				padding-right: 6%;
-				align-items: center;
+
 
 				.search {
-					display: flex;
-					align-content: center;
+					max-width: 100%;
+
+
 					box-shadow: $shad;
 					@include bRad (0.5rem);
 					padding: 2px;
@@ -148,6 +149,10 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				.searchWrapper {
 					display: block;
 					text-align: right;
+
+					.search {
+						display: inline-block;
+					}
 
 					.searchWrapperContent {
 						justify-content: flex-end;
@@ -433,7 +438,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 			.allCount {
 				padding: 0.2rem;
 				box-shadow: $shad;
-				@include bRad (0.5rem);
+				@include bRad (0.3rem);
 				margin-left: 0.5rem;
 				cursor: pointer;
 			}
@@ -459,62 +464,24 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				display: inline-flex;
 				flex-direction: column;
 
-
-				.filter, .allCount {
-
-				}
-
 				.filter {
 					display: inline-flex;
 					flex-direction: column;
 
-
-				}
-
 					.filterItem {
-           width: 100%;
-						margin-bottom: 0.5rem;
-
-						&:last-child {
-
-						}
+						max-width: 100%;
+						margin: 0 0 0.5rem 0;
 					}
 				}
-
 				.allCount {
-margin: 0 0 0.5rem 0;
-
+					max-width: 100%;
+					margin: 0 0 0.5rem 0;
 				}
 			}
-
-
-			@media screen and (max-width: 580px) {
-			.filterWrapper {
-				flex-direction: column;
-
-				.filter, .allCount {
-					margin: 0 auto;
-				}
-
-				.filter {
-
-					.filterItem {
-						margin-right: 1.3rem;
-
-						&:last-child {
-							margin-right: 0;
-						}
-					}
-				}
-
-				.allCount {
-					margin-bottom: 0.5rem;
-					width: 100%;
-					margin-left: 0;
-				}
-			}
-
 		}
+
+
+
 	}
 }
 

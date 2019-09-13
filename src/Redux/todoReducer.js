@@ -24,7 +24,7 @@ if(!initialState || !initialState.tasks || !initialState.tasks.length){
 		editDescriptionStatus: false,
 		defaultName: null,
 		defaultValue: null,
-		menuShow: true
+		menuShowStatus: false
 
 	}
 }
@@ -89,7 +89,7 @@ const todoReducer = (state = initialState, action) => {
 			}
 		}
 		case TOGGLE_SHOW_SIDE_BAR: {
-			return {...state, menuShow: action.status}
+			return {...state, menuShowStatus: action.status}
 		}
 		default:
 			return state;

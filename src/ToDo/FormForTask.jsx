@@ -21,7 +21,7 @@ const FormForTask = (props) => {
 				<div className={s.fieldWrapper}>
 					<Field className={s.textField}
 								 typeComponent='input'
-								 autoFocus={true}
+								 autoFocus={false}
 								 placeholder='Min 1 && Max 25 symbols'
 								 name="name"
 								 type="text"
@@ -43,8 +43,6 @@ const FormForTask = (props) => {
 								 validate={[required,maxLength300]}
 					/>
 				</div>
-
-
 				<div>
 					<button type="submit" disabled={submitting}>
 						Сохранить

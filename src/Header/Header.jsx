@@ -1,6 +1,6 @@
 import React from 'react'
 import s from './Header.module.scss'
-import brother from "../images/Sfinx.jpg";
+import brother from "../images/sfinx.jpg";
 
 
 export const Header = ({menuShowStatus,setToggleShowSideBar}) => {

@@ -26,22 +26,6 @@ class App extends Component {
 					<Switch>
 						<Route exact path='/' render={() => <Todo {...this.props}/>}/>
 						<Route path='/resume' render={() => <Resume/>}/>
-						<Route path='/telegram' component={() => {
-							window.location.href = 'https://t.me/S_f_i_n_x';
-							return null;
-						}}/>
-						<Route path='/djinni' component={() => {
-							window.location.href = 'https://djinni.co/q/03c688fb54';
-							return null;
-						}}/>
-						<Route path='/git' component={() => {
-							window.location.href = 'https://github.com/Sphinx7777?tab=repositories';
-							return null;
-						}}/>
-						<Route path='/mailLink' component={() => {
-							window.location.href = 'mailto:Spamoglot13@gmail.com';
-							return null;
-						}}/>
 					</Switch>
 				</div>
 				<Footer {...{menuShowStatus}}/>

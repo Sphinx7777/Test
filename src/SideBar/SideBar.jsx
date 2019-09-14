@@ -9,9 +9,10 @@ export const SideBar = ({menuShowStatus,setToggleShowSideBar}) => {
 	return (
 		<div className={!menuShowStatus ? s.sideBarWrapper : (s.sideBarWrapper + ' ' + s.disableShow)}>
 			<div className={s.sideBar}>
-				<NavLink className={s.sideBarLink} to="/social">
+				<a className={s.sideBarLink} target='_blank' rel='noopener noreferrer'
+					 href="#">
 					Проект социальной сети
-				</NavLink>
+				</a>
 				<NavLink className={s.sideBarLink} to="/">
 					ToDo приложение
 				</NavLink>

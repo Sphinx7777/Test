@@ -1,11 +1,9 @@
 import React from 'react'
 import s from './Footer.module.scss'
-import {NavLink} from "react-router-dom";
-import telegram from "../images/telegram.ico";
-import lamp from "../images/lamp.ico";
-import brother from "../images/Sfinx.jpg";
-import git from "../images/git.ico";
-
+import lamp from '../images/lamp.ico'
+import telegram from '../images/telegram.ico'
+import git from '../images/git.ico'
+import sfinx from '../images/sfinx.jpg'
 
 export const Footer = ({menuShowStatus}) => {
 
@@ -17,31 +15,36 @@ export const Footer = ({menuShowStatus}) => {
 						© «Онищенко С.М.», 2019
 					</div>
 					<div>
-						<NavLink className={s.link} target='_blank' to="/mailLink">
+						<a className={s.link} target='_blank' rel='noopener noreferrer'
+							 href="mailto:Spamoglot13@gmail.com">
 							Пишите письма
-						</NavLink>
+						</a>
 					</div>
 				</div>
 
 				<div className={s.LinkWrapper}>
 					<div className={s.linkLineWrapper}>
-						<NavLink className={s.link} target='_blank' to="/djinni">
+						<a className={s.link} target='_blank' rel='noopener noreferrer'
+										 href="https://djinni.co/q/03c688fb54">
 							<img className={s.linkImg} src={lamp} alt="Джинни"/><span className={s.linkTitle}>Djinni</span>
-						</NavLink>
-						<NavLink className={s.link} target='_blank' to="/telegram">
+						</a>
+						<a className={s.link} target='_blank' rel='noopener noreferrer'
+							 href="https://t.me/S_f_i_n_x">
 							<img className={s.linkImg} src={telegram} alt="Телеграм"/><span className={s.linkTitle}>Telegram</span>
-						</NavLink>
-						<NavLink className={s.link} target='_blank' to="/git">
+						</a>
+						<a className={s.link} target='_blank' rel='noopener noreferrer'
+							 href="https://github.com/Sphinx7777?tab=repositories">
 							<img className={s.linkImg} src={git} alt="Гитхаб"/><span className={s.linkTitle}>Git</span>
-						</NavLink>
+						</a>
 					</div>
 				</div>
-
 				<div className={s.photoWrapper}>
-					<img className={s.photo} src={brother} alt="Brother"/>
+					<img className={s.photo} src={sfinx} alt="Brother"/>
 				</div>
 			</footer>
 		</div>
 	)
 };
 
+/*
+rel="noopener noreferrer"*/

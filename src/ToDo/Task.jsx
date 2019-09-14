@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import s from './ToDo.module.scss'
-import settings from '../images/Settings.ico'
+import settings from '../images/settings.ico'
 import add from '../images/add.ico'
+
 
 
 
@@ -111,7 +112,7 @@ export const Task = ({
 												<img className={s.settingsIcon} src={add} alt="Сохранить"/>
 									</span>
 									<span className={s.closeEdit} onClickCapture={() => {
-										setError(false)
+										setError(false);
 									}} onClick={() => toggleEditStatus(t.id, false)} title='Закрыть'>X</span>
 								</div>}
 						</div>

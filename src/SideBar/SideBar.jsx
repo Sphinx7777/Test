@@ -10,7 +10,7 @@ export const SideBar = ({menuShowStatus,setToggleShowSideBar}) => {
 		<div className={!menuShowStatus ? s.sideBarWrapper : (s.sideBarWrapper + ' ' + s.disableShow)}>
 			<div className={s.sideBar}>
 				<a className={s.sideBarLink} target='_blank' rel='noopener noreferrer'
-					 href="#">
+					 href="https://sphinx7777.github.io/SocialNetvork">
 					Проект социальной сети
 				</a>
 				<NavLink className={s.sideBarLink} to="/">

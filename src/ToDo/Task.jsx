@@ -4,8 +4,6 @@ import settings from '../images/settings.ico'
 import add from '../images/add.ico'
 
 
-
-
 export const Task = ({
 											 newTasks, changeTask, changeTaskStatus, editTask, editMode,
 											 toggleEditStatus, defaultName, defaultValue
@@ -36,10 +34,18 @@ export const Task = ({
 					<div key={t.id + i} className={s.taskWrapper}>
 						<div className={s.taskName}>
 							{!t.editStatus
-								? <div><span>Название : </span><span className={s.name}>{t.name}</span></div>
+								? <div>
+									<span>Название : </span>
+									<span className={s.name}
+												onDoubleClick={() => {
+													editTask(t.id, t.name, t.description)
+												}}>{t.name}
+								</span>
+							</div>
 								: <div>
 									<span
-										className={!error ? s.fieldEditMode : s.fieldEditMode + ' ' + s.error}>Min 1 && Max 25 symbols : </span>
+										className={!error ? s.fieldEditMode : s.fieldEditMode + ' ' + s.error}>Min 1 && Max 25 symbols :
+									</span>
 									<input className={!error ? s.editName : s.editName + ' ' + s.error}
 												 defaultValue={t.name}
 												 maxLength='25'
@@ -55,11 +61,14 @@ export const Task = ({
 													 } else if (event.key === 'Escape') {
 														 setError(false);
 														 toggleEditStatus(t.id, false);
-													 }}}/>
+													 }
+												 }}/>
 								</div>
 							}
 							<div><span>Дата создания : </span><span className={s.date}>{t.createDate}</span></div>
 						</div>
+
+
 						<div className={s.task}>
 							<div className={!t.status ? s.inputWrapper : s.inputWrapper + ' ' + s.changed}>
 								<input className={s.taskStatus}
@@ -72,10 +81,12 @@ export const Task = ({
 
 							</div>
 							{!t.editStatus
-								? <div
-									className={!t.status
-										? s.taskDescription
-										: s.taskDescription + ' ' + s.taskDescriptionOff}>
+								? <div onDoubleClick={() => {
+									editTask(t.id, t.name, t.description)
+								}}
+											 className={!t.status
+												 ? s.taskDescription
+												 : s.taskDescription + ' ' + s.taskDescriptionOff}>
 									{t.description ? t.description : 'Странно...что то да должно было быть...забыли написать наверное'}
 								</div>
 								: <div className={s.areaWrapper}>
@@ -116,6 +127,9 @@ export const Task = ({
 									}} onClick={() => toggleEditStatus(t.id, false)} title='Закрыть'>X</span>
 								</div>}
 						</div>
+
+
+
 					</div>
 				)
 			})}

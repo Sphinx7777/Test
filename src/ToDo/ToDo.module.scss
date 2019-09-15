@@ -2,6 +2,7 @@
 	border-radius: $br;
 	outline: none;
 }
+
 $shad: 0 1px 4px rgba(0, 0, 0, .3),
 -23px 0 20px -23px rgba(0, 0, 0, .6),
 23px 0 20px -23px rgba(0, 0, 0, .6),
@@ -249,6 +250,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 							border: 1px solid black;
 							font-size: 1.1rem;
 						}
+
 						.editName.error {
 							border: 1px solid red;
 						}
@@ -289,43 +291,44 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 							}
 
 							.area {
-								height: 7rem;
+								height: 10rem;
 								@include bRad (0.5rem);
 								box-shadow: $shad;
 								font-size: 1.4rem;
-								resize: none;
+								/*resize: none;*/
 								border: 1px solid black;
 								max-width: 30rem;
 								width: 33rem;
 								@media screen and (max-width: 900px) {
 									max-width: 29rem;
-									max-height: 7rem;
+									max-height: 20rem;
 								}
 								@media screen and (max-width: 800px) {
 									max-width: 27rem;
-									max-height: 7rem;
+
 								}
 								@media screen and (max-width: 750px) {
 									max-width: 24rem;
-									max-height: 7rem;
+
 								}
 								@media screen and (max-width: 650px) {
 									max-width: 20rem;
-									max-height: 7rem;
+
 								}
 								@media screen and (max-width: 600px) {
 									max-width: 18rem;
-									max-height: 7rem;
+
 								}
 								@media screen and (max-width: 550px) {
 									max-width: 15rem;
-									max-height: 7rem;
+
 								}
 								@media screen and (max-width: 500px) {
 									max-width: 14rem;
-									max-height: 5rem;
+
 								}
 							}
+
 							.area.error {
 								border: 1px solid red;
 							}
@@ -366,7 +369,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 							padding: 7px 0;
 							@include bRad (0.5rem);
 							box-shadow: $shad;
-							background-color: white;
+
 
 						}
 
@@ -422,7 +425,22 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 					@media screen and (max-width: 500px) {
 						.task {
-							flex-direction: column-reverse;
+							.inputWrapper {
+
+								span {
+									display: none;
+								}
+							}
+							.taskEdit {
+								display: flex;
+								padding: 0.2rem;
+								@include bRad (0.3rem);
+								cursor: pointer;
+
+								.settingsIcon {
+									max-width: 1rem;
+								}
+							}
 						}
 					}
 				}
@@ -459,6 +477,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				}
 			}
 		}
+
 		@media screen and (max-width: 750px) {
 			.filterWrapper {
 				display: inline-flex;
@@ -473,13 +492,13 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 						margin: 0 0 0.5rem 0;
 					}
 				}
+
 				.allCount {
 					max-width: 100%;
 					margin: 0 0 0.5rem 0;
 				}
 			}
 		}
-
 
 
 	}

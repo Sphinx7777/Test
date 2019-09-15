@@ -4,6 +4,7 @@ import lamp from '../images/lamp.ico'
 import telegram from '../images/telegram.ico'
 import git from '../images/git.ico'
 import sfinx from '../images/sfinx.jpg'
+import linkedIn from '../images/linkedIn.ico'
 
 export const Footer = ({menuShowStatus}) => {
 
@@ -35,6 +36,10 @@ export const Footer = ({menuShowStatus}) => {
 						<a className={s.link} target='_blank' rel='noopener noreferrer'
 							 href="https://github.com/Sphinx7777?tab=repositories">
 							<img className={s.linkImg} src={git} alt="Гитхаб"/><span className={s.linkTitle}>Git</span>
+						</a>
+						<a className={s.link} target='_blank' rel='noopener noreferrer'
+							 href="https://www.linkedin.com/in/onishchenkosergei/">
+							<img className={s.linkImg} src={linkedIn} alt="Linkedin"/><span className={s.linkTitle}>Linkedin</span>
 						</a>
 					</div>
 				</div>

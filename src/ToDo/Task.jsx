@@ -67,8 +67,6 @@ export const Task = ({
 							}
 							<div><span>Дата создания : </span><span className={s.date}>{t.createDate}</span></div>
 						</div>
-
-
 						<div className={s.task}>
 							<div className={!t.status ? s.inputWrapper : s.inputWrapper + ' ' + s.changed}>
 								<input className={s.taskStatus}
@@ -127,12 +125,8 @@ export const Task = ({
 									}} onClick={() => toggleEditStatus(t.id, false)} title='Закрыть'>X</span>
 								</div>}
 						</div>
-
-
-
 					</div>
-				)
-			})}
+				)})}
 		</>
 	)
 };

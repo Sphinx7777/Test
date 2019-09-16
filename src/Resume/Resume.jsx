@@ -1,10 +1,10 @@
 import React from 'react'
 import s from './Resume.module.scss'
-import resume from '../Others/resumeOnishchenkoSergei.pdf'
+import resume from '../Others/resumeOnishenkoSergei.pdf'
 import coverLetter from '../Others/coverLetterOnishchenkoSergei.pdf'
 
 
-export const Resume = (props) => {
+export const Resume = () => {
 
 	return (
 		<div className={s.resumeWrapper}>

@@ -1,10 +1,10 @@
 import React from 'react'
 import s from './Resume.module.scss'
-import resume from '../Others/resumeOnishenkoSergei.pdf'
+import resume from '../Others/resumeOnishchenkoSergei.pdf'
 import coverLetter from '../Others/coverLetterOnishchenkoSergei.pdf'
 
 
-export const Resume = () => {
+const Resume = () => {
 
 	return (
 		<div className={s.resumeWrapper}>
@@ -15,4 +15,4 @@ export const Resume = () => {
 		</div>
 	);
 };
-
+export default Resume;

@@ -16,7 +16,7 @@ export const SideBar = ({menuShowStatus,setToggleShowSideBar}) => {
 				<NavLink className={s.sideBarLink} to="/">
 					ToDo приложение
 				</NavLink>
-				<NavLink className={s.sideBarLink} to="/todonew">
+				<NavLink className={s.sideBarLink} to="/newToDo">
 					ToDo2 еще не начал
 				</NavLink>
 				<NavLink className={s.sideBarLink} to="/resume">

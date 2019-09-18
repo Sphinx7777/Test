@@ -2,7 +2,6 @@
 	border-radius: $br;
 	outline: none;
 }
-
 $shad: 0 1px 4px rgba(0, 0, 0, .3),
 -23px 0 20px -23px rgba(0, 0, 0, .6),
 23px 0 20px -23px rgba(0, 0, 0, .6),
@@ -10,9 +9,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 
 .headerWrapper {
-margin: 0.5rem 0.5rem 0 9.5rem;
-
-
+	margin: 0.5rem 0.5rem 0 9.5rem;
 
 	.header {
 		@include bRad (0.5rem);
@@ -29,18 +26,21 @@ margin: 0.5rem 0.5rem 0 9.5rem;
 		.menu {
 
 			.toggleMenu {
+				background-color: rgba(0, 0, 0, 0.1);
 				width: 8.2rem;
 				padding: 0.5rem;
 				margin-left: 0.5rem;
 				box-shadow: $shad;
-				border:1px solid white;
+				border: 1px solid white;
 				@include bRad (0.5rem);
 				cursor: pointer;
+
 				&:hover {
-					background-color: rgba(0,0,0,0.1);
+					background-color: rgba(0, 0, 0, 0.2);
 				}
 			}
 		}
+
 		.logo {
 
 			.logoImg {
@@ -52,18 +52,22 @@ margin: 0.5rem 0.5rem 0 9.5rem;
 		}
 	}
 }
+
 .headerWrapper.headerDisableMenu {
 	margin: 0 auto 0.5rem auto;
 }
+
 @media screen and (max-width: 650px) {
 	.headerWrapper {
 		margin: 0 auto 0.5rem auto;
 	}
 }
+
 @media screen and (max-width: 550px) {
 	.headerWrapper {
 
 		.header {
+
 			.logo {
 				display: none;
 			}

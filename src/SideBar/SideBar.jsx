@@ -23,8 +23,6 @@ export const SideBar = ({menuShowStatus,setToggleShowSideBar}) => {
 					Резюме
 				</NavLink>
 				<div className={s.sideBarToClose} onClick={()=>{setToggleShowSideBar(true)}}>X</div>
-
-
 			</div>
 		</div>
 	)

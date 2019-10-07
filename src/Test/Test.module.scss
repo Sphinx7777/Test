@@ -14,7 +14,6 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 	margin: 0 auto;
 
 
-
 	.itemNews {
 
 
@@ -34,6 +33,10 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 			margin-top: 0.5rem;
 			padding: 0.5rem;
 			@include bRad (0.5rem);
+
+			img {
+				padding: 0.5rem;
+			}
 		}
 
 
@@ -45,19 +48,26 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				margin: 0.5rem auto;
 
 				.comment {
+					margin-bottom: 1rem;
 
 					.commentHeader {
+						position: relative;
 						box-shadow: $shad;
 						@include bRad (0.5rem);
 						display: flex;
 						justify-content: space-between;
 						padding: .5rem;
+						@media screen and (max-width: 530px) {
+							display: block;
+
+						}
 					}
 
 					.commentText {
 						background-color: rgba(0, 0, 0, 0.05);
 						@include bRad (0.5rem);
 						margin-top: 0.5rem;
+
 					}
 				}
 
@@ -71,13 +81,17 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 						justify-content: space-between;
 						padding: .5rem;
 						margin-top: 0.5rem;
-
+						@media screen and (max-width: 530px) {
+							display: block;
+						}
 					}
 
 					.repliesText {
 						background-color: rgba(0, 0, 0, 0.05);
 						@include bRad (0.5rem);
 						margin-top: 0.5rem;
+						margin-bottom: 1rem;
+
 
 					}
 
@@ -91,12 +105,16 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 							justify-content: space-between;
 							padding: .5rem;
 							margin-top: 0.5rem;
+							@media screen and (max-width: 530px) {
+								display: block;
+							}
 						}
 
 						.repliesText {
 							background-color: rgba(0, 0, 0, 0.05);
 							@include bRad (0.5rem);
 							margin-top: 0.5rem;
+
 
 						}
 					}
@@ -105,11 +123,39 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 		}
 	}
 }
-.likes {
-	background-color: white;
-	@include bRad (0.5rem);
-	padding: 5px;
-}
 
-@media screen and (max-width: 700px) {
+.likes {
+	box-shadow: $shad;
+	@include bRad (0.2rem);
+	cursor: pointer;
+	padding: 0 5px;
+
+	&:hover {
+		background-color: rgba(0, 0, 0, 0.05)
+	}
+}
+.likesCount {
+	padding: 0 1rem;
+	background-color: white;
+}
+.text {
+	p {
+		padding: 3px;
+		margin: 0;
+		background-color: white;
+		border-bottom: 1px solid black;
+		@include bRad (0.5rem);
+	}
+}
+.date {
+	font-size: 0.8rem;
+}
+.name {
+	padding-right: 0.3rem;
+}
+@media screen and (max-width: 530px) {
+
+	flex-direction: column;
+
+
 }

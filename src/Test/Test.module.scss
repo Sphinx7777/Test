@@ -9,23 +9,107 @@ $shad: 0 1px 4px rgba(0, 0, 0, .3),
 inset 0 0 40px rgba(0, 0, 0, .1);
 
 
-.todoWrapper {
+.newsWrapper {
 
 	margin: 0 auto;
-	@include bRad (0.5rem);
 
 
-	.todo {
+
+	.itemNews {
 
 
-		.filterWrapper {
+		.itemHeader {
+			display: flex;
+			justify-content: space-between;
+			font-weight: bold;
+			align-content: center;
+			padding: 0.5rem;
+			@include bRad (0.5rem);
+			margin-top: 1rem;
+			box-shadow: $shad;
+		}
 
+		.itemText {
+			background-color: rgba(0, 0, 0, 0.05);
+			margin-top: 0.5rem;
+			padding: 0.5rem;
+			@include bRad (0.5rem);
 		}
 
 
+		.commentsWrapper {
 
+			.comments {
+				max-width: 60rem;
+				padding: 0.5rem;
+				margin: 0.5rem auto;
 
+				.comment {
+
+					.commentHeader {
+						box-shadow: $shad;
+						@include bRad (0.5rem);
+						display: flex;
+						justify-content: space-between;
+						padding: .5rem;
+					}
+
+					.commentText {
+						background-color: rgba(0, 0, 0, 0.05);
+						@include bRad (0.5rem);
+						margin-top: 0.5rem;
+					}
+				}
+
+				.replies {
+					margin-left: 3rem;
+
+					.repliesHeader {
+						box-shadow: $shad;
+						@include bRad (0.5rem);
+						display: flex;
+						justify-content: space-between;
+						padding: .5rem;
+						margin-top: 0.5rem;
+
+					}
+
+					.repliesText {
+						background-color: rgba(0, 0, 0, 0.05);
+						@include bRad (0.5rem);
+						margin-top: 0.5rem;
+
+					}
+
+					.repliesForReplies {
+						margin-left: 6rem;
+
+						.repliesForRepliesHeader {
+							box-shadow: $shad;
+							@include bRad (0.5rem);
+							display: flex;
+							justify-content: space-between;
+							padding: .5rem;
+							margin-top: 0.5rem;
+						}
+
+						.repliesText {
+							background-color: rgba(0, 0, 0, 0.05);
+							@include bRad (0.5rem);
+							margin-top: 0.5rem;
+
+						}
+					}
+				}
+			}
+		}
 	}
 }
+.likes {
+	background-color: white;
+	@include bRad (0.5rem);
+	padding: 5px;
+}
 
-@media screen and (max-width: 700px) {}
+@media screen and (max-width: 700px) {
+}

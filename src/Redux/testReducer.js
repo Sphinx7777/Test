@@ -1,5 +1,5 @@
 /*import {load} from "redux-localstorage-simple";
-let data = load({namespace:'testTask'});
+let data = load({namespace:'forTest'});
 let initial = data.test; */
 
 
@@ -49,7 +49,7 @@ const testReducer = (state = initialState, action) => {
 				commentsDataReplies[i].map(t => {
 					if (t.id === action.id) {
 						t.likes = action.number;
-						commentsDataRepliesWithGangedLikes.push(t) ;
+						commentsDataRepliesWithGangedLikes.push(t);
 					}else {
 						commentsDataRepliesWithGangedLikes.push(t) ;
 					}

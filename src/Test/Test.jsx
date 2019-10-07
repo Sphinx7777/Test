@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import s from './Test.module.scss'
 
 let newDate = new Date();
@@ -14,6 +14,7 @@ let createDate = (newDate.toLocaleString("ru", options));
 function createMarkup(text) {
 	return {__html: text};
 }
+
 function MyComponent(text) {
 	return <span className={s.text} dangerouslySetInnerHTML={createMarkup(text)}/>;
 }
@@ -21,7 +22,6 @@ function MyComponent(text) {
 
 export const Test = ({articleData, commentsData, changeTheNumberOfLikes, changeTheNumberOfLikesReplies}) => {
 
-	const [showReplies,setStatusShowReplies]=useState(false);
 
 	return (
 		<div className={s.newsWrapper}>
@@ -40,13 +40,13 @@ export const Test = ({articleData, commentsData, changeTheNumberOfLikes, changeT
 									<span className={s.name}>Name : <b>{MyComponent(c.name)}</b></span>
 									<span className={s.date}>{createDate}</span>
 									{c.likes >= 0 && <div>
-										<span className={s.likes}
+										<button className={s.likes}
 													onClick={() => {
 														changeTheNumberOfLikes(c.id, c.likes + 1)
-													}}>Like + </span><span className={s.likesCount}><b>{c.likes}</b></span>
-										<span className={s.likes} onClick={() => {
-											changeTheNumberOfLikes(c.id, c.likes > 0 ? c.likes - 1 : 0)
-										}}> - DisLike</span>
+													}}>Like + </button><span className={s.likesCount}><b>{c.likes}</b></span>
+										<button className={s.likes} disabled={c.likes===0} onClick={() => {
+											changeTheNumberOfLikes(c.id,c.likes - 1)
+										}}> - DisLike</button>
 									</div>}
 								</div>
 								<div className={s.commentText}>
@@ -60,13 +60,13 @@ export const Test = ({articleData, commentsData, changeTheNumberOfLikes, changeT
 											<span className={s.name}>Name : <b>{MyComponent(r.name)}</b></span>
 											<span className={s.date}>{createDate}</span>
 											{r.likes >= 0 && <div>
-												<span className={s.likes}
-														onClick={() => {
-															changeTheNumberOfLikesReplies(r.id, r.likes + 1)
-														}}>Like + </span><span className={s.likesCount}><b>{r.likes}</b></span>
-												<span className={s.likes} onClick={() => {
-													changeTheNumberOfLikesReplies(r.id, r.likes > 0 ? r.likes - 1 : 0)
-												}}> - DisLike</span>
+												<button className={s.likes}
+															onClick={() => {
+																changeTheNumberOfLikesReplies(r.id, r.likes + 1)
+															}}>Like + </button><span className={s.likesCount}><b>{r.likes}</b></span>
+												<button className={s.likes} disabled={r.likes===0} onClick={() => {
+													changeTheNumberOfLikesReplies(r.id,r.likes - 1)
+												}}> - DisLike</button>
 											</div>}
 										</div>
 										<div className={s.repliesText}>

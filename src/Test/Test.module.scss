@@ -10,12 +10,9 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 
 .newsWrapper {
-
 	margin: 0 auto;
 
-
 	.itemNews {
-
 
 		.itemHeader {
 			display: flex;
@@ -39,7 +36,6 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 			}
 		}
 
-
 		.commentsWrapper {
 
 			.comments {
@@ -59,7 +55,6 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 						padding: .5rem;
 						@media screen and (max-width: 530px) {
 							display: block;
-
 						}
 					}
 
@@ -67,7 +62,6 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 						background-color: rgba(0, 0, 0, 0.05);
 						@include bRad (0.5rem);
 						margin-top: 0.5rem;
-
 					}
 				}
 
@@ -91,8 +85,6 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 						@include bRad (0.5rem);
 						margin-top: 0.5rem;
 						margin-bottom: 1rem;
-
-
 					}
 
 					.repliesForReplies {
@@ -114,8 +106,6 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 							background-color: rgba(0, 0, 0, 0.05);
 							@include bRad (0.5rem);
 							margin-top: 0.5rem;
-
-
 						}
 					}
 				}
@@ -129,15 +119,20 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 	@include bRad (0.2rem);
 	cursor: pointer;
 	padding: 0 5px;
-
 	&:hover {
-		background-color: rgba(0, 0, 0, 0.05)
+		background-color: rgba(0, 0, 0, 0.05);
 	}
+	&:disabled {
+		background-color: transparent;
+	}
+
 }
+
 .likesCount {
 	padding: 0 1rem;
 	background-color: white;
 }
+
 .text {
 	p {
 		padding: 3px;
@@ -147,15 +142,11 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 		@include bRad (0.5rem);
 	}
 }
+
 .date {
 	font-size: 0.8rem;
 }
+
 .name {
 	padding-right: 0.3rem;
-}
-@media screen and (max-width: 530px) {
-
-	flex-direction: column;
-
-
 }

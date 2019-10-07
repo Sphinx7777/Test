@@ -12,7 +12,7 @@ let reducers = combineReducers({
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__|| compose;
 const store = createStore(reducers,compose(
 	composeEnhancers(
-		applyMiddleware(thunkMiddleware,save({namespace:'testTask'}))
+		applyMiddleware(thunkMiddleware,save({namespace:'forTest'}))
 	)));
 
 export default store

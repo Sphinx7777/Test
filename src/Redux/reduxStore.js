@@ -1,19 +1,18 @@
 import {applyMiddleware, combineReducers, compose, createStore} from "redux";
 import thunkMiddleware from "redux-thunk";
-import todoReducer from "./todoReducer";
-import { reducer as formReducer } from 'redux-form';
+import testReducer from "./testReducer";
 import { save} from 'redux-localstorage-simple'
 
 
 let reducers = combineReducers({
-	toDo: todoReducer,
-	form: formReducer
+	test: testReducer,
+
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__|| compose;
 const store = createStore(reducers,compose(
 	composeEnhancers(
-		applyMiddleware(thunkMiddleware,save({namespace:'Tasks-list'}))
+		applyMiddleware(thunkMiddleware,save({namespace:'testTask'}))
 	)));
 
 export default store

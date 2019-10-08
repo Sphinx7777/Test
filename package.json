@@ -2,7 +2,7 @@
 	"name": "my-app",
 	"version": "0.1.0",
 	"private": true,
-	"homepage": "https://Sphinx7777.github.io/Portfolio",
+	"homepage": "https://Sphinx7777.github.io/Test",
 	"dependencies": {
 		"axios": "^0.19.0",
 		"build": "^0.1.4",

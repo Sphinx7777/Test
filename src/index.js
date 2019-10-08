@@ -8,11 +8,11 @@ import App from "./App";
 import store from "./Redux/reduxStore";
 
 ReactDOM.render(
-	<BrowserRouter>
+	<HashRouter>
 		<Provider store={store}>
 	<App />
 		</Provider>
-	</BrowserRouter>
+	</HashRouter>
 	, document.getElementById('root'));
 
 serviceWorker.unregister();

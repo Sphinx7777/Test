@@ -9,7 +9,9 @@ export const Header = () => {
 		<div className={s.headerWrapper}>
 			<header className={s.header}>
 				<div>
-					<h2 className={s.headTitle}>Тестовое задание</h2>
+					<h2 className={s.headTitle}>
+						Тестовое задание
+					</h2>
 				</div>
 			</header>
 		</div>

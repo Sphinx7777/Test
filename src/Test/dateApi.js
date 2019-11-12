@@ -1,3 +1,4 @@
+
 export const articleData = {
 	id: 1,
 	title: 'Hello world',

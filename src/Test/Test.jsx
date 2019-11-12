@@ -1,93 +1,97 @@
 import React from 'react'
 import s from './Test.module.scss'
+import {HeaderTest} from "./HeaderTest";
+import {Comment} from "./Comment";
+import {Replies} from "./Replies/Replies";
+import {RepliesForReplies} from "./Replies/RepliesForReplies";
 
-let newDate = new Date();
-let options = {
+const newDate = new Date();
+const options = {
 	year: 'numeric',
 	month: 'long',
 	day: 'numeric',
 	hour: 'numeric',
 	minute: 'numeric'
 };
-let createDate = (newDate.toLocaleString("ru", options));
+const createDate = (newDate.toLocaleString("ru", options));
 
-function createMarkup(text) {
-	return {__html: text};
-}
+const createMarkup = text => ({__html: text});
 
-function MyComponent(text) {
-	return <span className={s.text} dangerouslySetInnerHTML={createMarkup(text)}/>;
-}
+const MyComponent = (text) => {
+	return <span
+		className={s.text}
+		dangerouslySetInnerHTML={createMarkup(text)}/>;
+};
 
 
-export const Test = ({articleData, commentsData, changeTheNumberOfLikes, changeTheNumberOfLikesReplies}) => {
+export const Test = (
+	{
+		articleData,
+		commentsData,
+		changeTheNumberOfLikes,
+		changeTheNumberOfLikesReplies
+	}) => {
 
+	const setNumbersOfLikes = (id, likes) => changeTheNumberOfLikes(id, likes);
+
+	const setNumberOfLikesReplies = (id, likes) => changeTheNumberOfLikesReplies(id, likes);
 
 	return (
+
 		<div className={s.newsWrapper}>
 			<div className={s.itemNews}>
-				<div className={s.itemHeader}>
-					<span className={s.itemHeaderTitle}>{articleData.title}</span><span className={s.itemDate}>{createDate}</span>
-				</div>
-				<div className={s.itemText}>
-					{MyComponent(articleData.text)}
-				</div>
-				{commentsData.map(c =>
+				<HeaderTest {...
+					{
+						articleData,
+						MyComponent,
+						createDate
+					}}
+				/>
+				{commentsData.map(com =>
 					<div className={s.commentsWrapper} key={Math.random()}>
 						<div className={s.comments}>
-							<div className={s.comment}>
-								<div className={s.commentHeader}>
-									<span className={s.name}>Name : <b>{MyComponent(c.name)}</b></span>
-									<span className={s.date}>{createDate}</span>
-									{c.likes >= 0 && <div>
-										<button className={s.likes}
-													onClick={() => {
-														changeTheNumberOfLikes(c.id, c.likes + 1)
-													}}>Like + </button><span className={s.likesCount}><b>{c.likes}</b></span>
-										<button className={s.likes} disabled={c.likes===0} onClick={() => {
-											changeTheNumberOfLikes(c.id,c.likes - 1)
-										}}> - DisLike</button>
-									</div>}
-								</div>
-								<div className={s.commentText}>
-									{MyComponent(c.commentText)}
-								</div>
-							</div>
+							<Comment {...
+								{
+									MyComponent,
+									com,
+									setNumbersOfLikes,
+									createDate
+								}}
+							/>
 							<div className={s.replies}>
-								{c.replies ? c.replies.map(r =>
-									<React.Fragment key={Math.random()}>
-										<div className={s.repliesHeader}>
-											<span className={s.name}>Name : <b>{MyComponent(r.name)}</b></span>
-											<span className={s.date}>{createDate}</span>
-											{r.likes >= 0 && <div>
-												<button className={s.likes}
-															onClick={() => {
-																changeTheNumberOfLikesReplies(r.id, r.likes + 1)
-															}}>Like + </button><span className={s.likesCount}><b>{r.likes}</b></span>
-												<button className={s.likes} disabled={r.likes===0} onClick={() => {
-													changeTheNumberOfLikesReplies(r.id,r.likes - 1)
-												}}> - DisLike</button>
-											</div>}
-										</div>
-										<div className={s.repliesText}>
-											{MyComponent(r.commentText)}
-										</div>
-										<div className={s.repliesForReplies}>
-											{r.replies ? r.replies.map(rr =>
-												<React.Fragment key={Math.random()}>
-													<div className={s.repliesForRepliesHeader}>
-														<span className={s.name}>Name : <b>{MyComponent(rr.name)}</b></span>
-														<span className={s.date}>{createDate}</span>
-													</div>
-													<div className={s.repliesText}>
-														{MyComponent(rr.commentText)}
-													</div>
-												</React.Fragment>) : ''}
-										</div>
-									</React.Fragment>) : ''}
+								{com.replies
+									? com.replies.map(comRepl =>
+										<React.Fragment key={Math.random()}>
+											<Replies {...
+												{
+													MyComponent,
+													comRepl,
+													setNumberOfLikesReplies,
+													createDate
+												}}
+											/>
+											<div className={s.repliesForReplies}>
+												{comRepl.replies
+														? comRepl.replies.map(repRepl =>
+															<React.Fragment key={Math.random()}>
+																<RepliesForReplies {...
+																	{
+																		MyComponent,
+																		repRepl,
+																		createDate,
+																	}}
+																/>
+															</React.Fragment>
+													)
+														: ''
+												}
+											</div>
+										</React.Fragment>)
+									: ''}
 							</div>
 						</div>
-					</div>)}
+					</div>
+				)}
 			</div>
 		</div>
 	)

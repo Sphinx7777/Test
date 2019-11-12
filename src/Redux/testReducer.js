@@ -1,7 +1,3 @@
-/*import {load} from "redux-localstorage-simple";
-let data = load({namespace:'forTest'});
-let initial = data.test; */
-
 
 const ADD_ARTICLE = '/todoReducer___ADD_ARTICLE';
 const ADD_COMMENTS = '/todoReducer___ADD_COMMENTS';
@@ -20,15 +16,19 @@ const initialState = {
 
 const testReducer = (state = initialState, action) => {
 	switch (action.type) {
+
 		case ADD_ARTICLE: {
 			return {...state,articleData:{...action.article} }
 		}
+
 		case ADD_COMMENTS: {
 			return {...state,commentsData:[...action.comments],dataLoad: true }
 		}
+
 		case SET_CHANGE_LIKES: {
 			return {...state,likeChanged: false }
 		}
+
 		case SET_THE_NUMBER_OF_LIKES: {
 			return {
 				...state,commentsData: state.commentsData.map(t => {
@@ -38,7 +38,6 @@ const testReducer = (state = initialState, action) => {
 					}else{
 						return t;
 					}
-
 				})
 			}
 		}
@@ -59,16 +58,32 @@ const testReducer = (state = initialState, action) => {
 				...state,...state.commentsData,replies:commentsDataRepliesWithGangedLikes,likeChanged: true
 			}
 		}
+
 		default:
 			return state;
 	}
 };
 
-const setArticleFromAPI = (article) => ({type: ADD_ARTICLE, article});
-const setCommentsFromAPI = (comments) => ({type: ADD_COMMENTS, comments});
-const setTheNumberOfLikes = (idAndLikes) => ({type: SET_THE_NUMBER_OF_LIKES,...idAndLikes });
-const setTheNumberOfLikesReplies = (idAndLikes) => ({type: SET_THE_NUMBER_OF_LIKES_REPLIES,...idAndLikes });
-const setChangeLikes = () => ({type: SET_CHANGE_LIKES});
+const setArticleFromAPI = (article) => (
+	{
+		type: ADD_ARTICLE, article
+	});
+const setCommentsFromAPI = (comments) => (
+	{
+		type: ADD_COMMENTS, comments
+	});
+const setTheNumberOfLikes = (idAndLikes) => (
+	{
+		type: SET_THE_NUMBER_OF_LIKES,...idAndLikes
+	});
+const setTheNumberOfLikesReplies = (idAndLikes) => (
+	{
+		type: SET_THE_NUMBER_OF_LIKES_REPLIES,...idAndLikes
+	});
+const setChangeLikes = () => (
+	{
+		type: SET_CHANGE_LIKES
+	});
 
 
 export const getNewArticleAndComments = (articleData,commentsData) => {
@@ -88,33 +103,12 @@ export const changeTheNumberOfLikes = (id,number) => {
 	return  (dispatch) => {
 		dispatch(setTheNumberOfLikes({id,number}));
 	}};
+
 export const changeTheNumberOfLikesReplies = (id,number) => {
 	return  (dispatch) => {
 		dispatch(setTheNumberOfLikesReplies({id,number}));
 		dispatch(setChangeLikes());
-
 	}};
-
-
-
-
-
-/*
-export const articleAPI = {
-	get: () =>
-		new Promise(resolve => {
-			setTimeout(() => resolve(articleData), 1000);
-		})
-};
-
-export const commentsAPI = {
-	get: () =>
-		new Promise(resolve => {
-			setTimeout(() => resolve(commentsData), 1500);
-		}),
-};
-*/
-
 
 export default testReducer;
 
